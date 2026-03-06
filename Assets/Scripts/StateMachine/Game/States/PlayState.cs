@@ -20,7 +20,7 @@ namespace CardGame.StateMachine.Game.States
             _waitingForAdvance = false;
 
             Debug.Log("[Play] === PLAY PHASE ===");
-            PromptSelectCard(ctx, _activePlayer);
+            AdvanceToPlayer(ctx, 0);
         }
 
         public void OnUpdate(GameStateData ctx)
@@ -50,9 +50,33 @@ namespace CardGame.StateMachine.Game.States
             Debug.Log("[Play] Play phase complete.");
         }
 
+        private void AdvanceToPlayer(GameStateData ctx, int playerIndex)
+        {
+            _activePlayer = playerIndex;
+            _selectedHandIndex = -1;
+
+            var playerObj = ctx.Players[playerIndex];
+            var board = playerObj.GetComponent<PlayerBoard>();
+            var hand = playerObj.GetComponent<PlayerHand>();
+
+            var boardEmpty = IsBoardEmpty(board);
+            var handEmpty = hand.Count == 0;
+
+            if (boardEmpty && handEmpty)
+            {
+                ctx.GoToState(new EndGameState(playerIndex));
+                return;
+            }
+
+            PromptSelectCard(ctx, playerIndex);
+        }
+
         private void HandleCardSelection(GameStateData ctx)
         {
-            var hand = ctx.Players[_activePlayer].GetComponent<PlayerHand>();
+            var playerObj = ctx.Players[_activePlayer];
+            var hand = playerObj.GetComponent<PlayerHand>();
+            var board = playerObj.GetComponent<PlayerBoard>();
+            var mustPlay = IsBoardEmpty(board);
 
             for (var i = 0; i < 3; i++)
             {
@@ -80,8 +104,14 @@ namespace CardGame.StateMachine.Game.States
                 return;
             }
 
+            if (mustPlay)
+            {
+                Debug.Log($"[Play] Player {_activePlayer + 1} must play at least one card — board is empty!");
+                return;
+            }
+
             Debug.Log($"[Play] Player {_activePlayer + 1} passes.");
-            ConfirmPlayer(ctx, _activePlayer);
+            ConfirmPlayer(ctx);
         }
 
         private void HandleSlotSelection(GameStateData ctx)
@@ -119,21 +149,19 @@ namespace CardGame.StateMachine.Game.States
                     $"[Play] Player {_activePlayer + 1} placed '{identity?.CardName ?? card.name}' in slot {i + 1}.");
 
                 _selectedHandIndex = -1;
-                ConfirmPlayer(ctx, _activePlayer);
+                ConfirmPlayer(ctx);
                 return;
             }
         }
 
-        private void ConfirmPlayer(GameStateData ctx, int playerIndex)
+        private void ConfirmPlayer(GameStateData ctx)
         {
-            _done[playerIndex] = true;
-            var next = playerIndex == 0 ? 1 : 0;
+            _done[_activePlayer] = true;
+            var next = _activePlayer == 0 ? 1 : 0;
 
             if (!_done[next])
             {
-                _activePlayer = next;
-                _selectedHandIndex = -1;
-                PromptSelectCard(ctx, _activePlayer);
+                AdvanceToPlayer(ctx, next);
             }
             else
             {
@@ -144,14 +172,13 @@ namespace CardGame.StateMachine.Game.States
 
         private void PromptSelectCard(GameStateData ctx, int playerIndex)
         {
-            var hand = ctx.Players[playerIndex].GetComponent<PlayerHand>();
-            Debug.Log($"[Play] Player {playerIndex + 1} — pick a card from hand:");
+            var playerObj = ctx.Players[playerIndex];
+            var hand = playerObj.GetComponent<PlayerHand>();
+            var board = playerObj.GetComponent<PlayerBoard>();
+            var mustPlay = IsBoardEmpty(board);
 
-            if (hand.Count == 0)
-            {
-                Debug.Log("  (empty hand) — Press P to pass.");
-                return;
-            }
+            Debug.Log(
+                $"[Play] Player {playerIndex + 1} — pick a card from hand{(mustPlay ? " (MUST play, board is empty)" : "")}:");
 
             for (var i = 0; i < hand.Count; i++)
             {
@@ -159,7 +186,7 @@ namespace CardGame.StateMachine.Game.States
                 Debug.Log($"  [{i + 1}] {identity?.CardName ?? hand.Cards[i].name}");
             }
 
-            Debug.Log("  Press 1/2/3 to select, P to pass.");
+            Debug.Log(mustPlay ? "  Press 1/2/3 to select." : "  Press 1/2/3 to select, P to pass.");
         }
 
         private void PrintBoard(GameStateData ctx, int playerIndex)
@@ -170,11 +197,22 @@ namespace CardGame.StateMachine.Game.States
             for (var i = 0; i < PlayerBoard.BoardSize; i++)
             {
                 var slot = board.GetSlot(i);
-                var label = slot != null
-                    ? slot.GetComponent<CardIdentity>()?.CardName ?? slot.name
-                    : "(empty)";
+                var label = slot != null ? slot.GetComponent<CardIdentity>()?.CardName ?? slot.name : "(empty)";
                 Debug.Log($"  [{i + 1}] {label}");
             }
+        }
+
+        private bool IsBoardEmpty(PlayerBoard board)
+        {
+            for (var i = 0; i < PlayerBoard.BoardSize; i++)
+            {
+                if (board.GetSlot(i) != null)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
