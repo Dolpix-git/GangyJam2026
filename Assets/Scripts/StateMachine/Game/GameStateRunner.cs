@@ -3,14 +3,9 @@ using UnityEngine;
 
 namespace CardGame.StateMachine.Game
 {
-    /// <summary>
-    ///     Drives the game state machine. Lives on the Game State entity alongside GameStateData.
-    ///     Press SPACE to advance through phases.
-    /// </summary>
     [RequireComponent(typeof(GameStateData))]
     public class GameStateRunner : MonoBehaviour
     {
-        // After Battle we loop back to Draw (index 1)
         private const int LoopBackIndex = 1;
 
         private readonly IState<GameStateData>[] _phases =
