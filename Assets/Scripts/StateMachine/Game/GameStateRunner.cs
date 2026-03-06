@@ -6,19 +6,6 @@ namespace CardGame.StateMachine.Game
     [RequireComponent(typeof(GameStateData))]
     public class GameStateRunner : MonoBehaviour
     {
-        private const int LoopBackIndex = 1;
-
-        private readonly IState<GameStateData>[] _phases =
-        {
-            new EnterGameState(),
-            new DrawState(),
-            new PlayState(),
-            new RetreatState(),
-            new ModeState(),
-            new BattleState()
-        };
-
-        private int _currentPhaseIndex;
         private GameStateData _data;
         private StateMachine<GameStateData> _stateMachine;
 
@@ -26,33 +13,17 @@ namespace CardGame.StateMachine.Game
         {
             _data = GetComponent<GameStateData>();
             _stateMachine = new StateMachine<GameStateData>(_data);
+            _data.GoToState = _stateMachine.ChangeState;
         }
 
         private void Start()
         {
-            _stateMachine.ChangeState(_phases[_currentPhaseIndex]);
+            _stateMachine.ChangeState(new EnterGameState());
         }
 
         private void Update()
         {
             _stateMachine.Update();
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                AdvancePhase();
-            }
-        }
-
-        private void AdvancePhase()
-        {
-            _currentPhaseIndex++;
-
-            if (_currentPhaseIndex >= _phases.Length)
-            {
-                _currentPhaseIndex = LoopBackIndex;
-            }
-
-            _stateMachine.ChangeState(_phases[_currentPhaseIndex]);
         }
     }
 }

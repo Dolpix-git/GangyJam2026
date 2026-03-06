@@ -11,6 +11,10 @@ namespace CardGame.StateMachine.Game.States
 
         public void OnUpdate(GameStateData ctx)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ctx.GoToState(new DrawState());
+            }
         }
 
         public void OnExit(GameStateData ctx)
@@ -18,5 +22,4 @@ namespace CardGame.StateMachine.Game.States
             Debug.Log("[EnterGame] Leaving enter game phase.");
         }
     }
-    
 }

@@ -11,6 +11,10 @@ namespace CardGame.StateMachine.Game.States
 
         public void OnUpdate(GameStateData ctx)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ctx.GoToState(new PlayState());
+            }
         }
 
         public void OnExit(GameStateData ctx)
