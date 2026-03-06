@@ -64,6 +64,12 @@ namespace CardGame.StateMachine.Game.States
                 return;
             }
 
+            if (CardCount(board) == 1)
+            {
+                Debug.Log("[Retreat] Can't retreat — at least one card must stay on the board.");
+                return;
+            }
+
             board.RemoveAt(slotIndex);
             hand.AddCard(card);
 
@@ -71,6 +77,20 @@ namespace CardGame.StateMachine.Game.States
             Debug.Log(
                 $"[Retreat] Player {playerIndex + 1} retreated '{identity?.CardName ?? card.name}' from slot {slotIndex + 1} back to hand.");
             PromptPlayer(ctx, playerIndex);
+        }
+
+        private int CardCount(PlayerBoard board)
+        {
+            var count = 0;
+            for (var i = 0; i < PlayerBoard.BoardSize; i++)
+            {
+                if (board.GetSlot(i) != null)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
 
         private void PromptPlayer(GameStateData ctx, int playerIndex)
