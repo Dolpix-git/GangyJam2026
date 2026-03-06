@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5470938037870814937}
   - component: {fileID: 1368813221226279444}
   - component: {fileID: 8730104942631280995}
+  - component: {fileID: 8235808620696982584}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -91,3 +92,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardGame.Data.SpeedData
   baseSpeed: 0
   currentSpeed: 0
+--- !u!114 &8235808620696982584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192913620483531119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39647111f8c42d64390b91f9ce3c0a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.Data.CardMode
