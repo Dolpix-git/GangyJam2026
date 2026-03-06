@@ -6,7 +6,6 @@ namespace CardGame.StateMachine.Game.States
     {
         public void OnEnter(GameStateData ctx)
         {
-            ctx.CurrentPhase = GamePhase.Retreat;
             Debug.Log("[Retreat] Players may retreat cards. Press SPACE to continue.");
         }
 

@@ -6,7 +6,6 @@ namespace CardGame.StateMachine.Game.States
     {
         public void OnEnter(GameStateData ctx)
         {
-            ctx.CurrentPhase = GamePhase.Draw;
             Debug.Log("[Draw] Players draw cards. Press SPACE to continue.");
         }
 

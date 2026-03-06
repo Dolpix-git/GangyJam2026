@@ -6,7 +6,6 @@ namespace CardGame.StateMachine.Game.States
     {
         public void OnEnter(GameStateData ctx)
         {
-            ctx.CurrentPhase = GamePhase.Battle;
             Debug.Log("[Battle] Cards battle! Press SPACE to start next round.");
         }
 

@@ -6,7 +6,6 @@ namespace CardGame.StateMachine.Game.States
     {
         public void OnEnter(GameStateData ctx)
         {
-            ctx.CurrentPhase = GamePhase.Mode;
             Debug.Log("[Mode] Players select card modes / abilities. Press SPACE to continue.");
         }
 

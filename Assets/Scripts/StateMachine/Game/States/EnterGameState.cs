@@ -6,7 +6,6 @@ namespace CardGame.StateMachine.Game.States
     {
         public void OnEnter(GameStateData ctx)
         {
-            ctx.CurrentPhase = GamePhase.EnterGame;
             Debug.Log("[EnterGame] Game is starting. Press SPACE to begin.");
         }
 
