@@ -7,11 +7,12 @@ namespace CardGame.StateMachine.Game
     public class GameStateData : MonoBehaviour
     {
         [Header("Prefabs")]
-        [SerializeField] public GameObject playerPrefab;
-        [SerializeField] public GameObject cardPrefab;
+        [SerializeField] public GameObject PlayerPrefab;
+        [SerializeField] public GameObject CardPrefab;
+        [SerializeField] private List<GameObject> _players = new();
 
         [Header("Runtime")]
-        public List<GameObject> Players { get; } = new();
+        public List<GameObject> Players => _players;
 
         public Action<IState<GameStateData>> GoToState { get; set; }
     }

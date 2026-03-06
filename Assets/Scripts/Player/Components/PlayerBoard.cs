@@ -4,7 +4,7 @@ namespace CardGame.Player
 {
     public class PlayerBoard : MonoBehaviour
     {
-        private const int BoardSize = 3;
+        public const int BoardSize = 3;
         private readonly GameObject[] _slots = new GameObject[BoardSize];
 
         public bool IsFull

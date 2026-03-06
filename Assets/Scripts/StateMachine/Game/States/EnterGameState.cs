@@ -34,7 +34,7 @@ namespace CardGame.StateMachine.Game.States
 
             for (var i = 0; i < PlayerCount; i++)
             {
-                var playerObj = Object.Instantiate(ctx.playerPrefab);
+                var playerObj = Object.Instantiate(ctx.PlayerPrefab);
                 playerObj.name = $"Player{i + 1}";
 
                 var playerData = playerObj.GetComponent<PlayerData>();
@@ -43,7 +43,7 @@ namespace CardGame.StateMachine.Game.States
                 var deck = playerObj.GetComponent<PlayerDeck>();
                 for (var j = 0; j < CardsPerDeck; j++)
                 {
-                    var card = Object.Instantiate(ctx.cardPrefab);
+                    var card = Object.Instantiate(ctx.CardPrefab);
                     card.name = $"Card_P{i + 1}_{j + 1}";
                     deck.AddCard(card);
                 }
