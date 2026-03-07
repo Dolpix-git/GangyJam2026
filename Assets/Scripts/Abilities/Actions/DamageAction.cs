@@ -11,24 +11,25 @@ namespace CardGame.Abilities.Actions
 
         public void Execute(ActionContext ctx, Action onComplete)
         {
-            var target = ActionTargeting.GetOpposingCard(ctx);
+            var damage = ctx.Caster.GetComponent<BuffData>()?.ModifyOutgoingDamage(_damage) ?? _damage;
+            var targets = ActionTargeting.Resolve(ctx, TargetSlot.EnemyOpposing);
 
-            if (target != null)
+            if (targets.Count == 0)
+            {
+                Debug.Log("DamageAction: No card in opposing slot — no damage dealt.");
+            }
+
+            foreach (var target in targets)
             {
                 var damageable = target.GetComponent<IDamageable>();
                 if (damageable != null)
                 {
-                    var damage = ctx.Caster.GetComponent<BuffData>()?.ModifyOutgoingDamage(_damage) ?? _damage;
                     damageable.TakeDamage(damage);
                 }
                 else
                 {
                     Debug.LogWarning("DamageAction: Target has no IDamageable component.");
                 }
-            }
-            else
-            {
-                Debug.Log("DamageAction: No card in opposing slot — no damage dealt.");
             }
 
             onComplete();

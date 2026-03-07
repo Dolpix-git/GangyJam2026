@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using CardGame.Buffs;
+
 namespace CardGame.Card.CardData
 {
     [System.Serializable]
@@ -9,6 +12,6 @@ namespace CardGame.Card.CardData
         public int MaxHealth;
         public int Speed;
         public int StruggleDamage;
-        public System.Collections.Generic.List<CardGame.Buffs.CardTag> Tags = new();
+        public List<CardTag> Tags = new();
     }
 }
