@@ -8,6 +8,12 @@ namespace CardGame.Data
         int CurrentHealth { get; }
         int MaxHealth { get; }
         bool IsDead { get; }
+
+        /// <summary>Fires whenever CurrentHealth changes. Args: (current, max).</summary>
+        event System.Action<int, int> OnHealthChanged;
+
+        /// <summary>Fires once when the card's health reaches zero.</summary>
+        event System.Action OnDied;
     }
 
     /// <summary>

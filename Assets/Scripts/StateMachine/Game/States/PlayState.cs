@@ -1,3 +1,4 @@
+using CardGame.Card.Components;
 using CardGame.Data;
 using CardGame.Player;
 using UnityEngine;
@@ -143,6 +144,7 @@ namespace CardGame.StateMachine.Game.States
 
                 var card = hand.RemoveAt(_selectedHandIndex);
                 board.TryPlaceCard(card, i);
+                card.GetComponent<CardDeathHandler>().Initialize(playerObj);
 
                 var identity = card.GetComponent<CardIdentity>();
                 Debug.Log(

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 42435755441859873}
   - component: {fileID: 8657004081654340901}
   - component: {fileID: 4910505231075650045}
+  - component: {fileID: 1053461283550013346}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -84,3 +85,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1dc55a18f486946869c94dad7084bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardGame.Player.PlayerHand
+--- !u!114 &1053461283550013346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7688493499716272214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e113cfd965c9a24aa582d7253d56035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.Player.PlayerGraveyard
