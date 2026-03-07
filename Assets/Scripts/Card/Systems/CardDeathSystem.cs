@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CardGame.Card.Components
 {
-    public class CardDeathHandler : MonoBehaviour
+    public class CardDeathSystem : MonoBehaviour
     {
         private GameObject _ownerPlayer;
 

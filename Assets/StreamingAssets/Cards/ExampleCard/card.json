@@ -3,5 +3,6 @@
     "CardName": "Example Card",
     "Description": "A basic example card.",
     "MaxHealth": 10,
-    "Speed": 5
+    "Speed": 5,
+    "StruggleDamage": 2
 }

@@ -5,6 +5,7 @@ namespace CardGame.Card.CardData
 {
     public class AbilityJson
     {
+        public int MaxPP;
         public List<ActionStepJson> Steps = new();
     }
 
