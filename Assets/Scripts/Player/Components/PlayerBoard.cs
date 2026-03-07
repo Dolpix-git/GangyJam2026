@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace CardGame.Player
@@ -7,6 +8,9 @@ namespace CardGame.Player
         public const int BoardSize = 3;
         private readonly GameObject[] _slots = new GameObject[BoardSize];
 
+        public event Action<GameObject, int> OnCardAdded;
+        public event Action<int> OnCardRemoved;
+        
         public bool IsFull
         {
             get
@@ -60,6 +64,7 @@ namespace CardGame.Player
             }
 
             _slots[slotIndex] = card;
+            OnCardAdded?.Invoke(card, slotIndex);
             return true;
         }
 
@@ -95,6 +100,7 @@ namespace CardGame.Player
 
             var card = _slots[slotIndex];
             _slots[slotIndex] = null;
+            OnCardRemoved?.Invoke(slotIndex);
             return card;
         }
     }
