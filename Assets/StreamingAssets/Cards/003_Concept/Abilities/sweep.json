@@ -6,13 +6,7 @@
       "Type": "DamageAction",
       "Data": {
         "_damage": 3,
-        "_target": "EnemyOpposing"
-      }
-    },
-    {
-      "Type": "FlankDamageAction",
-      "Data": {
-        "_damage": 2
+        "_target": "All"
       }
     }
   ]

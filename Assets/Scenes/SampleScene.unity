@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewDeck
   modelView: {fileID: 545755734}
-  deckNumberCount: {fileID: 452625928}
+  _deckNumberCount: {fileID: 452625928}
 --- !u!222 &452625930
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1581,6 +1581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194060973}
   - component: {fileID: 1194060975}
+  - component: {fileID: 1194060976}
   - component: {fileID: 1194060974}
   m_Layer: 5
   m_Name: GraveCount
@@ -1708,6 +1709,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194060972}
   m_CullTransparentMesh: 1
+--- !u!114 &1194060976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194060972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f68828a018465283af6fd6aa049711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewGraveyard
+  modelView: {fileID: 1926798008}
+  _graveNumberCount: {fileID: 1194060974}
 --- !u!1 &1430722746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,10 +1778,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewBoard
   modelView: {fileID: 1430722749}
-  boardSlot:
-  - {fileID: 1021417482}
-  - {fileID: 417643041}
-  - {fileID: 609459131}
+  _boardSlot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1430722749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2098,7 +2113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewDeck
   modelView: {fileID: 925561478}
-  deckNumberCount: {fileID: 1628435506}
+  _deckNumberCount: {fileID: 1628435506}
 --- !u!222 &1628435508
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2162,10 +2177,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewBoard
   modelView: {fileID: 1766619978}
-  boardSlot:
-  - {fileID: 556748336}
-  - {fileID: 1543846563}
-  - {fileID: 147187665}
+  _boardSlot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1766619978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2400,7 +2415,6 @@ GameObject:
   - component: {fileID: 1926798006}
   - component: {fileID: 1926798005}
   - component: {fileID: 1926798008}
-  - component: {fileID: 1926798007}
   m_Layer: 5
   m_Name: PlayerGraveyard
   m_TagString: Untagged
@@ -2466,20 +2480,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926798003}
   m_CullTransparentMesh: 1
---- !u!114 &1926798007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926798003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f68828a018465283af6fd6aa049711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewGraveyard
-  modelView: {fileID: 1926798008}
-  graveNumberCount: {fileID: 1194060974}
 --- !u!114 &1926798008
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -173,7 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewCardAbilities
   modelView: {fileID: 571621775833697427}
   _abilityPrefab: {fileID: 993923491976012100, guid: 75fbf4c3482896f41a928bdcbe83f7ed, type: 3}
-  _abilityContainer: {fileID: 7276882209546871656}
 --- !u!1 &3894853725351605324
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewCardSpeed
   modelView: {fileID: 571621775833697427}
-  cardSpeedText: {fileID: 4268474999022576322}
+  _cardSpeedText: {fileID: 4268474999022576322}
 --- !u!222 &1954822703098281636
 CanvasRenderer:
   m_ObjectHideFlags: 0
