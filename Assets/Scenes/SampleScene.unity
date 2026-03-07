@@ -1019,7 +1019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e44fd6066404bdd983813b9a50bf1a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardUIManager
-  cardPrefab: {fileID: 571621775833697427, guid: 4bd42ececcd0cc64bb20c83d7fdf44f0, type: 3}
+  _cardPrefab: {fileID: 571621775833697427, guid: 4bd42ececcd0cc64bb20c83d7fdf44f0, type: 3}
+  _scale: 2.5
 --- !u!4 &637024448
 Transform:
   m_ObjectHideFlags: 0

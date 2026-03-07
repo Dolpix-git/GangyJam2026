@@ -5,22 +5,24 @@ using UnityEngine;
 
 public class CardUIManager : MonoSingleton<CardUIManager>
 {
-    [SerializeField] private ModelViewCard cardPrefab;
+    [SerializeField] private ModelViewCard _cardPrefab;
+    [SerializeField] private float _scale;
 
-    private Dictionary<GameObject, ModelViewCard> AllCards = new();
+    private readonly Dictionary<GameObject, ModelViewCard> _allCards = new();
 
     public void CreateCardUI(GameObject cardModel, Transform parent)
     {
-        var modelViewCard = Instantiate(cardPrefab, parent);
+        var modelViewCard = Instantiate(_cardPrefab, parent);
         modelViewCard.transform.localPosition = Vector3.zero;
+        modelViewCard.transform.localScale = Vector3.one * _scale;
         modelViewCard.SetModel(cardModel);
 
-        AllCards.Add(cardModel, modelViewCard);
+        _allCards.Add(cardModel, modelViewCard);
     }
 
     public void ReParentCard(GameObject cardModel, Transform parent)
     {
-        if (!AllCards.TryGetValue(cardModel, out var model))
+        if (!_allCards.TryGetValue(cardModel, out var model))
         {
             CreateCardUI(cardModel, parent);
             return;
@@ -32,7 +34,12 @@ public class CardUIManager : MonoSingleton<CardUIManager>
 
     public void DestroyCard(GameObject cardModel)
     {
-        if (!AllCards.TryGetValue(cardModel, out var model))
+        if (cardModel == null)
+        {
+            return;
+        }
+
+        if (!_allCards.TryGetValue(cardModel, out var model))
         {
             return;
         }

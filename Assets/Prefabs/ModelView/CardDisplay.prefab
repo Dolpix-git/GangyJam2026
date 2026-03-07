@@ -31,7 +31,8 @@ RectTransform:
   m_Children:
   - {fileID: 1024714933212053913}
   - {fileID: 8883108971312531680}
-  - {fileID: 6734037328996369132}
+  - {fileID: 3227948043743725767}
+  - {fileID: 4326771409470795599}
   - {fileID: 1325372662777731578}
   - {fileID: 1822708650708177051}
   m_Father: {fileID: 0}
@@ -139,6 +140,7 @@ GameObject:
   - component: {fileID: 3227948043743725767}
   - component: {fileID: 5561651210059391913}
   - component: {fileID: 8593989946751731533}
+  - component: {fileID: 1911896856000137977}
   m_Layer: 5
   m_Name: CardName
   m_TagString: Untagged
@@ -158,11 +160,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6734037328996369132}
+  m_Father: {fileID: 5218601841905186333}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035, y: 20.165}
+  m_AnchoredPosition: {x: 0.000061035, y: 61.83822}
   m_SizeDelta: {x: 89.601, y: 16.588}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5561651210059391913
@@ -265,6 +267,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1911896856000137977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4748780200214134620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2755ecd43e168549aa2fff9d421c493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewCardName
+  modelView: {fileID: 571621775833697427}
+  _cardNameText: {fileID: 8593989946751731533}
 --- !u!1 &6056260192551969440
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.2, y: -46}
+  m_AnchoredPosition: {x: -9.5, y: -20.7}
   m_SizeDelta: {x: 69.2352, y: 14.0376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305003549517286929
@@ -417,59 +433,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &6278598552283021625
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6734037328996369132}
-  - component: {fileID: 8424500368392885406}
-  m_Layer: 5
-  m_Name: CardIdentity
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6734037328996369132
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6278598552283021625}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3227948043743725767}
-  - {fileID: 4326771409470795599}
-  m_Father: {fileID: 5218601841905186333}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000019073, y: 41.673218}
-  m_SizeDelta: {x: 89.6011, y: 52.5813}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8424500368392885406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6278598552283021625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a611885c5d04c71a6388816ac5bad2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewCardIdentity
-  modelView: {fileID: 571621775833697427}
-  cardNameText: {fileID: 8593989946751731533}
-  descriptionText: {fileID: 1204956455848947724}
 --- !u!1 &7015584453133209610
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +444,7 @@ GameObject:
   - component: {fileID: 4326771409470795599}
   - component: {fileID: 3957070134705406661}
   - component: {fileID: 1204956455848947724}
+  - component: {fileID: 5808858626046508725}
   m_Layer: 5
   m_Name: CardDescription
   m_TagString: Untagged
@@ -500,11 +464,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6734037328996369132}
+  m_Father: {fileID: 5218601841905186333}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: -5.1}
+  m_AnchoredPosition: {x: 1.5643e-10, y: -54.504}
   m_SizeDelta: {x: 89.601, y: 23.7415}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3957070134705406661
@@ -607,6 +571,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5808858626046508725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7015584453133209610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53130ee40e36d1140a1ac650118efd16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewCardDescription
+  modelView: {fileID: 571621775833697427}
+  _descriptionText: {fileID: 1204956455848947724}
 --- !u!1 &8429906389051005406
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +620,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -3.9999983, y: -4}
+  m_SizeDelta: {x: -6, y: -6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7787701548498300345
 CanvasRenderer:
@@ -717,7 +695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.5340288, y: -59.69698}
+  m_AnchoredPosition: {x: -2.8340166, y: -34.39699}
   m_SizeDelta: {x: 82.5671, y: 13.3563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7246988920291134439
