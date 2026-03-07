@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8730104942631280995}
   - component: {fileID: 8235808620696982584}
   - component: {fileID: 3825250414197039764}
+  - component: {fileID: 7218511951514790988}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -116,3 +117,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89de013316d0f4c48b2943b4dd5f8b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardGame.Card.Components.CardDeathHandler
+--- !u!114 &7218511951514790988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192913620483531119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8fc4c2a9064a945a99c969a4a204dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.Data.StruggleData
+  _struggleDamage: 0
