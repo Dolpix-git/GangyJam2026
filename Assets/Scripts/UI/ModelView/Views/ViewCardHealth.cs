@@ -10,18 +10,38 @@ namespace UI.ModelView.Views
     {
         [SerializeField] private TMP_Text cardHealthText;
         
-        private HealthData cardHealth;
-        
+        private HealthData _cardHealth;
+
         protected override void HandleModelChanged(GameObject model)
         {
+            if (_cardHealth != null)
+            {
+                _cardHealth.OnHealthChanged -= OnHealthChanged;
+            }
+
             if (model == null)
             {
+                _cardHealth = null;
                 return;
             }
 
-            cardHealth = model.GetComponent<HealthData>();
+            _cardHealth = model.GetComponent<HealthData>();
+            _cardHealth.OnHealthChanged += OnHealthChanged;
+            cardHealthText.text = _cardHealth.CurrentHealth.ToString();
+        }
 
-            cardHealthText.text = cardHealth.CurrentHealth.ToString();
+        private void OnHealthChanged(int current, int max)
+        {
+            cardHealthText.text = current.ToString();
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            if (_cardHealth != null)
+            {
+                _cardHealth.OnHealthChanged -= OnHealthChanged;
+            }
         }
     }
 }

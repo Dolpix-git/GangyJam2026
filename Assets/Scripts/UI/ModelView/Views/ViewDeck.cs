@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace UI.ModelView.Views
 {
-    public class ViewDeck: ViewBase<ModelViewDeck, PlayerDeck>
+    public class ViewDeck : ViewBase<ModelViewDeck, PlayerDeck>
     {
-        [SerializeField] private TMP_Text deckNumberCount;
-        
-        private PlayerDeck deck;
-        
+        [SerializeField] private TMP_Text _deckNumberCount;
+
+        private PlayerDeck _deck;
+
         protected override void HandleModelChanged(PlayerDeck model)
         {
             if (model == null)
@@ -19,30 +19,30 @@ namespace UI.ModelView.Views
                 return;
             }
 
-            if (deck != null)
+            if (_deck != null)
             {
-                deck.OnDeckChanged -= UpdateDeckCount;
+                _deck.OnDeckChanged -= UpdateDeckCount;
             }
 
-            deck = model;
-            deck.OnDeckChanged += UpdateDeckCount;
+            _deck = model;
+            _deck.OnDeckChanged += UpdateDeckCount;
 
             UpdateDeckCount();
         }
 
         private void OnDestroy()
         {
-            if (deck == null)
+            if (_deck == null)
             {
                 return;
             }
-            
-            deck.OnDeckChanged += UpdateDeckCount;
+
+            _deck.OnDeckChanged += UpdateDeckCount;
         }
 
         private void UpdateDeckCount()
         {
-            deckNumberCount.text = deck.Count.ToString();
+            _deckNumberCount.text = _deck.Count.ToString();
         }
     }
 }

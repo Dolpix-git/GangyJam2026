@@ -8,9 +8,9 @@ namespace UI.ModelView.Views
 {
     public class ViewGraveyard : ViewBase<ModelViewGraveyard, PlayerGraveyard>
     {
-        [SerializeField] private TMP_Text graveNumberCount;
+        [SerializeField] private TMP_Text _graveNumberCount;
 
-        private PlayerGraveyard graveyard;
+        private PlayerGraveyard _graveyard;
 
         protected override void HandleModelChanged(PlayerGraveyard model)
         {
@@ -19,28 +19,28 @@ namespace UI.ModelView.Views
                 return;
             }
 
-            if (graveyard != null)
+            if (_graveyard != null)
             {
                 Unsubscribe();
             }
 
-            graveyard = model;
-            graveyard.OnCardAdded += UpdateGraveCount;
-            
+            _graveyard = model;
+            _graveyard.OnCardAdded += UpdateGraveCount;
+
             UpdateGraveCount(null);
         }
 
         private void Unsubscribe()
         {
-            if (graveyard != null)
+            if (_graveyard != null)
             {
-                graveyard.OnCardAdded -= UpdateGraveCount;
+                _graveyard.OnCardAdded -= UpdateGraveCount;
             }
         }
 
         private void UpdateGraveCount(GameObject card)
         {
-            graveNumberCount.text = graveyard.Count.ToString();
+            _graveNumberCount.text = _graveyard.Count.ToString();
 
             CardUIManager.Instance.DestroyCard(card);
         }

@@ -6,7 +6,12 @@ namespace UI.ModelView.Views
 {
     public class ViewHand : ViewBase<ModelViewHand, PlayerHand>
     {
-        private PlayerHand hand;
+        private PlayerHand _hand;
+
+        private void OnDestroy()
+        {
+            Unsubscribe();
+        }
 
         protected override void HandleModelChanged(PlayerHand model)
         {
@@ -15,29 +20,24 @@ namespace UI.ModelView.Views
                 return;
             }
 
-            if (hand != null)
+            if (_hand != null)
             {
                 Unsubscribe();
             }
 
-            hand = model;
+            _hand = model;
 
-            hand.OnCardAdded += OnCardAdded;
-        }
-
-        private void OnDestroy()
-        {
-            Unsubscribe();
+            _hand.OnCardAdded += OnCardAdded;
         }
 
         private void Unsubscribe()
         {
-            if (hand == null)
+            if (_hand == null)
             {
                 return;
             }
 
-            hand.OnCardAdded -= OnCardAdded;
+            _hand.OnCardAdded -= OnCardAdded;
         }
 
         private void OnCardAdded(GameObject newCard)

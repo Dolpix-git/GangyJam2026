@@ -7,9 +7,13 @@ namespace UI.ModelView.Views
 {
     public class ViewBoard : ViewBase<ModelViewBoard, PlayerBoard>
     {
-        private PlayerBoard board;
+        [SerializeField] private GameObject[] _boardSlot = new GameObject[3];
+        private PlayerBoard _board;
 
-        [SerializeField] private GameObject[] boardSlot = new GameObject[3];
+        private void OnDestroy()
+        {
+            Unsubscribe();
+        }
 
         protected override void HandleModelChanged(PlayerBoard model)
         {
@@ -18,28 +22,23 @@ namespace UI.ModelView.Views
                 return;
             }
 
-            board = model;
-            board.OnCardAdded += OnCardAdded;
-        }
-
-        private void OnDestroy()
-        {
-            Unsubscribe();
+            _board = model;
+            _board.OnCardAdded += OnCardAdded;
         }
 
         private void Unsubscribe()
         {
-            if (board == null)
+            if (_board == null)
             {
                 return;
             }
 
-            board.OnCardAdded -= OnCardAdded;
+            _board.OnCardAdded -= OnCardAdded;
         }
 
         private void OnCardAdded(GameObject newCard, int slotIndex)
         {
-            CardUIManager.Instance.ReParentCard(newCard, boardSlot[slotIndex].transform);
+            CardUIManager.Instance.ReParentCard(newCard, _boardSlot[slotIndex].transform);
         }
     }
 }

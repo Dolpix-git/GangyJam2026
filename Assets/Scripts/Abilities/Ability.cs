@@ -16,6 +16,8 @@ namespace CardGame.Abilities
 
         public string Description => _pipeline.Description;
 
+        public event Action<int, int> OnPpChanged;
+
         public string Name { get; private set; }
         public int MaxPp { get; }
         public int CurrentPp { get; private set; }
@@ -29,17 +31,20 @@ namespace CardGame.Abilities
             }
 
             CurrentPp--;
+            OnPpChanged?.Invoke(CurrentPp, MaxPp);
             _pipeline.Run(ctx, onDone);
         }
 
         public void RestorePp(int amount)
         {
             CurrentPp = Math.Min(MaxPp, CurrentPp + amount);
+            OnPpChanged?.Invoke(CurrentPp, MaxPp);
         }
 
         public void RestoreAllPp()
         {
             CurrentPp = MaxPp;
+            OnPpChanged?.Invoke(CurrentPp, MaxPp);
         }
     }
 }

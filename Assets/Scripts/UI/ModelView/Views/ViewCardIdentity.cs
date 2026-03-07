@@ -8,10 +8,9 @@ namespace UI.ModelView.Views
 {
     public class ViewCardIdentity: ViewBase<ModelViewCard, GameObject>
     {
-        [SerializeField] private TMP_Text cardNameText;
-        [SerializeField] private TMP_Text descriptionText;
+        [SerializeField] private TMP_Text _cardNameText;
+        [SerializeField] private TMP_Text _descriptionText;
 
-        private CardIdentity cardIdentity;
         
         protected override void HandleModelChanged(GameObject model)
         {
@@ -20,10 +19,10 @@ namespace UI.ModelView.Views
                 return;
             }
 
-            cardIdentity = model.GetComponent<CardIdentity>();
+            var cardIdentity = model.GetComponent<CardIdentity>();
 
-            cardNameText.text = cardIdentity.CardName;
-            descriptionText.text = cardIdentity.Description;
+            _cardNameText.text = cardIdentity.CardName;
+            _descriptionText.text = cardIdentity.Description;
         }
     }
 }
