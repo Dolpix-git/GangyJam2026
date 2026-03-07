@@ -18,15 +18,5 @@ namespace UI.ModelView.Models
 
             SetModel(deck);
         }
-
-        public override void SetModel(PlayerDeck model)
-        {
-            if (model != null)
-            {
-                
-            }
-            
-            base.SetModel(model);
-        }
     }
 }

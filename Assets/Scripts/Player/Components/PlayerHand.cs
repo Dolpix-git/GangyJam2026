@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,14 +11,25 @@ namespace CardGame.Player
 
         private readonly List<GameObject> _cards = new();
 
+        public event Action<GameObject> OnCardAdded;
+        public event Action<GameObject> OnCardRemoved;
+
         public void AddCard(GameObject card)
         {
             _cards.Add(card);
+
+            OnCardAdded?.Invoke(card);
         }
 
         public bool RemoveCard(GameObject card)
         {
-            return _cards.Remove(card);
+            var removed = _cards.Remove(card);
+            if (removed)
+            {
+                OnCardRemoved?.Invoke(card);
+            }
+
+            return removed;
         }
 
         public GameObject RemoveAt(int index)
@@ -30,6 +42,7 @@ namespace CardGame.Player
 
             var card = _cards[index];
             _cards.RemoveAt(index);
+            OnCardRemoved?.Invoke(card);    
             return card;
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using CardGame.Player;
 using CardGame.UI.ModelViewPattern;
 using TMPro;

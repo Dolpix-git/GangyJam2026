@@ -39,6 +39,8 @@ namespace CardGame.Player
 
             var drawn = _cards[0];
             _cards.RemoveAt(0);
+            
+            OnDeckChanged?.Invoke();
             return drawn;
         }
     }
