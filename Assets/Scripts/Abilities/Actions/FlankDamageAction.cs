@@ -5,15 +5,20 @@ using UnityEngine;
 
 namespace CardGame.Abilities.Actions
 {
-    public class DamageAction : IAction
+    public class FlankDamageAction : IAction
     {
         [JsonProperty] private int _damage;
 
         public void Execute(ActionContext ctx, Action onComplete)
         {
-            var target = ActionTargeting.GetOpposingCard(ctx);
+            var targets = ActionTargeting.GetFlankingCards(ctx);
 
-            if (target != null)
+            if (targets.Count == 0)
+            {
+                Debug.Log("FlankDamageAction: No flanking targets.");
+            }
+
+            foreach (var target in targets)
             {
                 var damageable = target.GetComponent<IDamageable>();
                 if (damageable != null)
@@ -22,12 +27,8 @@ namespace CardGame.Abilities.Actions
                 }
                 else
                 {
-                    Debug.LogWarning("DamageAction: Target has no IDamageable component.");
+                    Debug.LogWarning("FlankDamageAction: Target has no IDamageable component.");
                 }
-            }
-            else
-            {
-                Debug.Log("DamageAction: No card in opposing slot — no damage dealt.");
             }
 
             onComplete();
