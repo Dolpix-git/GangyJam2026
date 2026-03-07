@@ -1,3 +1,4 @@
+using CardGame.Player;
 using UnityEngine;
 
 namespace CardGame.Card
@@ -5,11 +6,13 @@ namespace CardGame.Card
     public class CardSpawnerTest : MonoBehaviour
     {
         [SerializeField] private string _cardName;
+        [SerializeField] private PlayerDeck _playerDeck;
 
         [ContextMenu("Spawn Card")]
         private void SpawnCard()
         {
-            CardFactory.Instance.CreateCard(_cardName);
+            var newCard = CardFactory.Instance.CreateCard(_cardName);
+            _playerDeck?.AddCard(newCard);
         }
     }
 }
