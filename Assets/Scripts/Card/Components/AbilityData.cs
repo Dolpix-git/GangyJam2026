@@ -11,7 +11,7 @@ namespace CardGame.Data
         private readonly List<Ability> _abilities = new();
 
         public IReadOnlyList<Ability> Abilities => _abilities;
-        public bool IsStruggling => _abilities.Count > 0 && _abilities.All(a => !a.HasPP);
+        public bool IsStruggling => _abilities.Count > 0 && _abilities.All(a => !a.HasPp);
 
         public void Initialize(List<Ability> abilities)
         {

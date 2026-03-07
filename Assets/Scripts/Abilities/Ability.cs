@@ -6,38 +6,40 @@ namespace CardGame.Abilities
     {
         private readonly ActionPipeline _pipeline;
 
-        public Ability(ActionPipeline pipeline, int maxPP)
+        public Ability(ActionPipeline pipeline, int maxPp, string name)
         {
             _pipeline = pipeline;
-            MaxPP = maxPP;
-            CurrentPP = maxPP;
+            MaxPp = maxPp;
+            CurrentPp = maxPp;
+            Name = name;
         }
 
         public string Description => _pipeline.Description;
 
-        public int MaxPP { get; }
-        public int CurrentPP { get; private set; }
-        public bool HasPP => CurrentPP > 0;
+        public string Name { get; private set; }
+        public int MaxPp { get; }
+        public int CurrentPp { get; private set; }
+        public bool HasPp => CurrentPp > 0;
 
         public void Run(ActionContext ctx, Action onDone = null)
         {
-            if (!HasPP)
+            if (!HasPp)
             {
                 return;
             }
 
-            CurrentPP--;
+            CurrentPp--;
             _pipeline.Run(ctx, onDone);
         }
 
-        public void RestorePP(int amount)
+        public void RestorePp(int amount)
         {
-            CurrentPP = Math.Min(MaxPP, CurrentPP + amount);
+            CurrentPp = Math.Min(MaxPp, CurrentPp + amount);
         }
 
-        public void RestoreAllPP()
+        public void RestoreAllPp()
         {
-            CurrentPP = MaxPP;
+            CurrentPp = MaxPp;
         }
     }
 }

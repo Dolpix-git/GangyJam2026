@@ -55,21 +55,26 @@ namespace CardGame.Card
         {
             var abilitiesDir = Path.Combine(cardDir, "Abilities");
             if (!Directory.Exists(abilitiesDir))
+            {
                 return new List<Ability>();
+            }
 
             var abilities = new List<Ability>();
 
             foreach (var file in Directory.GetFiles(abilitiesDir, "*.json"))
             {
                 var abilityJson = LoadJson<AbilityJson>(file);
-                if (abilityJson == null) continue;
+                if (abilityJson == null)
+                {
+                    continue;
+                }
 
                 var actions = abilityJson.Steps
                     .Select(s => s.Action)
                     .Where(a => a != null)
                     .ToList();
 
-                abilities.Add(new Ability(new ActionPipeline(actions), abilityJson.MaxPP));
+                abilities.Add(new Ability(new ActionPipeline(actions), abilityJson.MaxPp, abilityJson.Name));
             }
 
             return abilities;
