@@ -9,6 +9,7 @@ namespace CardGame.Abilities
     /// </summary>
     public interface IAction
     {
+        string Description { get; }
         void Execute(ActionContext ctx, Action onComplete);
     }
 }

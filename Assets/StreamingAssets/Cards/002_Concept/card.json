@@ -1,0 +1,9 @@
+{
+    "CardId": "002_Concept",
+    "CardName": "002_Concept",
+    "Description": "DevCard",
+    "MaxHealth": 10,
+    "Speed": 6,
+    "StruggleDamage": 1,
+    "Tags": ["ImmuneFrost"]
+}

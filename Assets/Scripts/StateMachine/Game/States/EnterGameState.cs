@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using CardGame.Abilities;
-using CardGame.Abilities.Actions;
 using CardGame.Card;
-using CardGame.Data;
 using CardGame.Player;
 using UnityEngine;
 
@@ -10,14 +6,7 @@ namespace CardGame.StateMachine.Game.States
 {
     public class EnterGameState : IState<GameStateData>
     {
-        private const int PlayerCount = 2;
-        private const int CardsPerDeck = 3;
-
-        private static readonly string[] CardNames =
-        {
-            "SnowFlake", "IccCubeWorm", "SnowFox", "PineNeedle",
-            "Gomdorr", "Rogdolf", "SnowGolem", "Stimta"
-        };
+        private static readonly string[] _devCards = { "001_Concept", "002_Concept", "003_Concept" };
 
         public void OnEnter(GameStateData ctx)
         {
@@ -47,15 +36,13 @@ namespace CardGame.StateMachine.Game.States
                 playerData.Initialize($"Player {i + 1}");
 
                 var deck = playerObj.GetComponent<PlayerDeck>();
-                for (var j = 0; j < CardsPerDeck; j++)
+                foreach (var cardName in _devCards)
                 {
-                    var newCard = CardFactory.Instance.CreateCard("ExampleCard");
+                    var newCard = CardFactory.Instance.CreateCard(cardName);
                     deck.AddCard(newCard);
-
-                    //ToDo Implement loading cards into the player deck
                 }
-                
-                Debug.Log($"[EnterGame] Initialized {playerData.PlayerName} with {CardsPerDeck} cards in deck.");
+
+                Debug.Log($"[EnterGame] Initialized {playerData.PlayerName} with {_devCards.Length} cards in deck.");
             }
         }
     }

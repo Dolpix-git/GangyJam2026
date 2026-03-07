@@ -1,0 +1,19 @@
+{
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ApplyShieldAction",
+      "Data": {
+        "_absorb": 4,
+        "_target": "FriendlyBoth"
+      }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 2,
+        "_target": "Self"
+      }
+    }
+  ]
+}

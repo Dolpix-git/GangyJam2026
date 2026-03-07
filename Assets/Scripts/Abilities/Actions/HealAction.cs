@@ -10,6 +10,8 @@ namespace CardGame.Abilities.Actions
         [JsonProperty] private int _amount;
         [JsonProperty] private TargetSlot _target = TargetSlot.Self;
 
+        public string Description => $"Restore {_amount} HP to {ActionEnumNames.Of(_target)}.";
+
         public void Execute(ActionContext ctx, Action onComplete)
         {
             var targets = ActionTargeting.Resolve(ctx, _target);

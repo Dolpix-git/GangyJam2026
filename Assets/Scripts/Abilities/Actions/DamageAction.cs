@@ -10,6 +10,8 @@ namespace CardGame.Abilities.Actions
         [JsonProperty] private int _damage;
         [JsonProperty] private TargetSlot _target = TargetSlot.EnemyOpposing;
 
+        public string Description => $"Deal {_damage} damage to {ActionEnumNames.Of(_target)}.";
+
         public void Execute(ActionContext ctx, Action onComplete)
         {
             var damage = ctx.Caster.GetComponent<BuffData>()?.ModifyOutgoingDamage(_damage) ?? _damage;

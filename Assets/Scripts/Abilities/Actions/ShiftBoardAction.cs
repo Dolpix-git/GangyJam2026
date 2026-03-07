@@ -8,6 +8,8 @@ namespace CardGame.Abilities.Actions
     {
         [JsonProperty] private ShiftTarget _target;
 
+        public string Description => $"Shift the {ActionEnumNames.Of(_target)}.";
+
         public void Execute(ActionContext ctx, Action onComplete)
         {
             if (ctx.GameState == null)

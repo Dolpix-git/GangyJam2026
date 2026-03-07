@@ -1,0 +1,12 @@
+{
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "ApplyParalysisAction",
+      "Data": {
+        "_turns": 1,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

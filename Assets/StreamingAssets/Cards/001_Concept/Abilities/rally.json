@@ -1,0 +1,20 @@
+{
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "HealAction",
+      "Data": {
+        "_amount": 4,
+        "_target": "AllFriendly"
+      }
+    },
+    {
+      "Type": "ApplyDamageAmpAction",
+      "Data": {
+        "_multiplier": 1.5,
+        "_turns": 2,
+        "_target": "AllFriendly"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "CardId": "003_Concept",
+  "CardName": "003_Concept",
+  "Description": "DevCard",
+  "MaxHealth": 18,
+  "Speed": 4,
+  "StruggleDamage": 3,
+  "Tags": []
+}

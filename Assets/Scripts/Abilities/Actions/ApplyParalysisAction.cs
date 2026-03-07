@@ -11,6 +11,8 @@ namespace CardGame.Abilities.Actions
         [JsonProperty] private TargetSlot _target;
         [JsonProperty] private int _turns;
 
+        public string Description => $"Paralyse {ActionEnumNames.Of(_target)} for {_turns} turn(s).";
+
         public void Execute(ActionContext ctx, Action onComplete)
         {
             foreach (var card in ActionTargeting.Resolve(ctx, _target))

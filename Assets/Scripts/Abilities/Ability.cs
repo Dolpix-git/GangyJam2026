@@ -13,6 +13,8 @@ namespace CardGame.Abilities
             CurrentPP = maxPP;
         }
 
+        public string Description => _pipeline.Description;
+
         public int MaxPP { get; }
         public int CurrentPP { get; private set; }
         public bool HasPP => CurrentPP > 0;

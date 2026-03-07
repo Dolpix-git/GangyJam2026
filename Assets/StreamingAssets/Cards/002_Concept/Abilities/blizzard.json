@@ -1,0 +1,13 @@
+{
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "ApplyFrostAction",
+      "Data": {
+        "_damagePerTurn": 1,
+        "_turns": 2,
+        "_target": "AllEnemy"
+      }
+    }
+  ]
+}

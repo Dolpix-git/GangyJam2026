@@ -1,0 +1,20 @@
+{
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 2,
+        "_target": "EnemyOpposing"
+      }
+    },
+    {
+      "Type": "ApplyFrostAction",
+      "Data": {
+        "_damagePerTurn": 2,
+        "_turns": 3,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

@@ -11,6 +11,8 @@ namespace CardGame.Abilities.Actions
         [JsonProperty] private int _absorb;
         [JsonProperty] private TargetSlot _target;
 
+        public string Description => $"Shield {ActionEnumNames.Of(_target)} for {_absorb} absorb.";
+
         public void Execute(ActionContext ctx, Action onComplete)
         {
             foreach (var card in ActionTargeting.Resolve(ctx, _target))

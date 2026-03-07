@@ -1,0 +1,9 @@
+{
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {"_damage": 5, "_target": "EnemyOpposing"}
+    }
+  ]
+}

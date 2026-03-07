@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGame.Abilities
 {
@@ -11,6 +12,8 @@ namespace CardGame.Abilities
         {
             _actions = actions;
         }
+
+        public string Description => string.Join(" ", _actions.Select(a => a.Description));
 
         public void Run(ActionContext ctx, Action onDone = null)
         {

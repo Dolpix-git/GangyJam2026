@@ -9,6 +9,8 @@ namespace CardGame.Abilities.Actions
     {
         [JsonProperty] private float _seconds;
 
+        public string Description => $"Wait {_seconds}s.";
+
         public void Execute(ActionContext ctx, Action onComplete)
         {
             ctx.Runner.StartCoroutine(WaitRoutine(onComplete));

@@ -1,0 +1,12 @@
+{
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ApplyShieldAction",
+      "Data": {
+        "_absorb": 6,
+        "_target": "Self"
+      }
+    }
+  ]
+}
