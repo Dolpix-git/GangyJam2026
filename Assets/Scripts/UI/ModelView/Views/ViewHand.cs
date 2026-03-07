@@ -59,7 +59,14 @@ namespace UI.ModelView.Views
         private void OnCardRemoved(GameObject removedCard)
         {
             var cardModel = cardsInHand.FirstOrDefault(cardUI => cardUI.Model == removedCard);
+
+            if (cardModel == null)
+            {
+                return;
+            }
+
             cardsInHand.Remove(cardModel);
+            DestroyImmediate(cardModel.gameObject);
         }
     }
 }
