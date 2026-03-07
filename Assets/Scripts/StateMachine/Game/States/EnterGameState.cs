@@ -14,8 +14,8 @@ namespace CardGame.StateMachine.Game.States
 
         private static readonly string[] CardNames =
         {
-            "Ironback", "Vexling", "Duskpaw", "Grimthorn", "Ashfang",
-            "Coldmere", "Brackus", "Nettleclaw", "Siltmaw", "Wraithkin"
+            "SnowFlake", "IccCubeWorm", "SnowFox", "PineNeedle",
+            "Gomdorr", "Rogdolf", "SnowGolem", "Stimta"
         };
 
         public void OnEnter(GameStateData ctx)
@@ -27,10 +27,7 @@ namespace CardGame.StateMachine.Game.States
 
         public void OnUpdate(GameStateData ctx)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ctx.GoToState(new DrawState());
-            }
+            ctx.GoToState(new DrawState());
         }
 
         public void OnExit(GameStateData ctx)

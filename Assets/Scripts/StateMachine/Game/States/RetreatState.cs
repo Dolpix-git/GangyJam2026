@@ -12,7 +12,7 @@ namespace CardGame.StateMachine.Game.States
         {
             Debug.Log("[Retreat] === RETREAT PHASE ===");
             _activePlayer = 0;
-            PromptPlayer(ctx, _activePlayer);
+            AdvanceToNextEligiblePlayer(ctx);
         }
 
         public void OnUpdate(GameStateData ctx)
@@ -35,20 +35,30 @@ namespace CardGame.StateMachine.Game.States
 
             Debug.Log($"[Retreat] Player {_activePlayer + 1} done retreating.");
             _activePlayer++;
-
-            if (_activePlayer < ctx.Players.Count)
-            {
-                PromptPlayer(ctx, _activePlayer);
-            }
-            else
-            {
-                ctx.GoToState(new ModeState());
-            }
+            AdvanceToNextEligiblePlayer(ctx);
         }
 
         public void OnExit(GameStateData ctx)
         {
             Debug.Log("[Retreat] Retreat phase complete.");
+        }
+
+        private void AdvanceToNextEligiblePlayer(GameStateData ctx)
+        {
+            while (_activePlayer < ctx.Players.Count)
+            {
+                var board = ctx.Players[_activePlayer].GetComponent<PlayerBoard>();
+                if (CardCount(board) > 1)
+                {
+                    PromptPlayer(ctx, _activePlayer);
+                    return;
+                }
+
+                Debug.Log($"[Retreat] Player {_activePlayer + 1} has only 1 card — skipping retreat.");
+                _activePlayer++;
+            }
+
+            ctx.GoToState(new ModeState());
         }
 
         private void TryRetreat(GameStateData ctx, int playerIndex, int slotIndex)

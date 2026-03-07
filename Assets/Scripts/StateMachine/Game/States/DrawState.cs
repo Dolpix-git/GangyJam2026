@@ -6,8 +6,12 @@ namespace CardGame.StateMachine.Game.States
 {
     public class DrawState : IState<GameStateData>
     {
+        private float _timer;
+        private const float DrawDuration = 2f;
+
         public void OnEnter(GameStateData ctx)
         {
+            _timer = 0f;
             Debug.Log("[Draw] === DRAW PHASE ===");
 
             foreach (var playerObj in ctx.Players)
@@ -29,12 +33,13 @@ namespace CardGame.StateMachine.Game.States
                 }
             }
 
-            Debug.Log("[Draw] Press SPACE to continue.");
+            Debug.Log("[Draw] Advancing in 2 seconds...");
         }
 
         public void OnUpdate(GameStateData ctx)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            _timer += Time.deltaTime;
+            if (_timer >= DrawDuration)
             {
                 ctx.GoToState(new PlayState());
             }
