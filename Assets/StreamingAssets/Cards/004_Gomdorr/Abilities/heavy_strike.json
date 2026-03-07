@@ -1,0 +1,13 @@
+{
+  "Name": "heavy strike",
+  "MaxPP": 10,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 5,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}
