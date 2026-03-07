@@ -9,8 +9,6 @@ namespace UI.ModelView.Views
 {
     public class ViewAbilityDescription : ViewBase<ModelViewAbility, Ability>, IPointerEnterHandler, IPointerExitHandler
     {
-        private const float TooltipWidth = 30f;
-        private const float Border = 5f;
         [SerializeField] private TMP_Text _descriptionText;
         [SerializeField] private GameObject _tooltipRoot;
 
@@ -36,21 +34,6 @@ namespace UI.ModelView.Views
             }
 
             _descriptionText.text = model.Description;
-            FitTooltipToText();
-        }
-
-        private void FitTooltipToText()
-        {
-            var textRect = _descriptionText.GetComponent<RectTransform>();
-            textRect.sizeDelta = new Vector2(TooltipWidth, 0f);
-
-            _descriptionText.ForceMeshUpdate();
-
-            var textHeight = _descriptionText.preferredHeight;
-            textRect.sizeDelta = new Vector2(TooltipWidth, textHeight);
-
-            var tooltipRect = _tooltipRoot.GetComponent<RectTransform>();
-            tooltipRect.sizeDelta = new Vector2(TooltipWidth + Border * 2f, textHeight + Border * 2f);
         }
     }
 }
