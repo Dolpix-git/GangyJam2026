@@ -44,6 +44,6 @@ public class CardUIManager : MonoSingleton<CardUIManager>
             return;
         }
 
-        Destroy(model);
+        Destroy(model.gameObject);
     }
 }
