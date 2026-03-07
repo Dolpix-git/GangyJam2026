@@ -8,6 +8,7 @@ namespace CardGame.StateMachine.Game
     {
         [Header("Prefabs")]
         [SerializeField] public GameObject PlayerPrefab;
+
         [SerializeField] public GameObject CardPrefab;
         [SerializeField] private List<GameObject> _players = new();
 
@@ -15,5 +16,6 @@ namespace CardGame.StateMachine.Game
         public List<GameObject> Players => _players;
 
         public Action<IState<GameStateData>> GoToState { get; set; }
+        public MonoBehaviour Runner { get; set; }
     }
 }

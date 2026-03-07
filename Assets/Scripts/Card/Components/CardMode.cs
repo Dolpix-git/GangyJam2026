@@ -2,20 +2,16 @@ using UnityEngine;
 
 namespace CardGame.Data
 {
-    /// <summary>
-    /// Stores the mode (ability) selected for this card during the current round.
-    /// Reset each round before mode selection begins.
-    /// </summary>
     public class CardMode : MonoBehaviour
     {
-        public string SelectedAbilityId { get; set; }
+        public int SelectedAbilityIndex { get; set; } = -1;
         public string TargetingData { get; set; }
 
-        public bool HasSelection => !string.IsNullOrEmpty(SelectedAbilityId);
+        public bool HasSelection => SelectedAbilityIndex >= 0;
 
         public void Clear()
         {
-            SelectedAbilityId = null;
+            SelectedAbilityIndex = -1;
             TargetingData = null;
         }
     }

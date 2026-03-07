@@ -56,18 +56,16 @@ namespace CardGame.StateMachine.Game.States
             var card = board.GetSlot(_activeSlot);
             var abilities = card.GetComponent<AbilityData>();
 
-            for (var i = 0; i < abilities.AbilityIds.Count; i++)
+            for (var i = 0; i < abilities.Abilities.Count; i++)
             {
                 if (!Input.GetKeyDown(KeyCode.Alpha1 + i))
                 {
                     continue;
                 }
 
-                var selectedAbility = abilities.AbilityIds[i];
-                card.GetComponent<CardMode>().SelectedAbilityId = selectedAbility;
+                card.GetComponent<CardMode>().SelectedAbilityIndex = i;
 
-                Debug.Log(
-                    $"[Mode] Selected ability '{selectedAbility}' for '{card.GetComponent<CardIdentity>()?.CardName ?? card.name}'.");
+                Debug.Log($"[Mode] Selected ability {i} for '{card.GetComponent<CardIdentity>()?.CardName ?? card.name}'.");
                 Debug.Log("[Mode] Enter targeting info and press ENTER, or press ENTER to skip:");
 
                 _awaitingTargeting = true;
@@ -129,7 +127,7 @@ namespace CardGame.StateMachine.Game.States
             Debug.Log(
                 $"[Mode] Player {playerIndex + 1} — '{identity?.CardName ?? card.name}' (slot {slotIndex + 1}). Pick an ability:");
 
-            if (abilities == null || abilities.AbilityIds.Count == 0)
+            if (abilities == null || abilities.Abilities.Count == 0)
             {
                 Debug.Log("  (no abilities) — skipping.");
                 _activeSlot++;
@@ -137,9 +135,9 @@ namespace CardGame.StateMachine.Game.States
                 return;
             }
 
-            for (var i = 0; i < abilities.AbilityIds.Count; i++)
+            for (var i = 0; i < abilities.Abilities.Count; i++)
             {
-                Debug.Log($"  [{i + 1}] {abilities.AbilityIds[i]}");
+                Debug.Log($"  [{i + 1}] Ability {i}");
             }
         }
 

@@ -14,6 +14,7 @@ namespace CardGame.StateMachine.Game
             _data = GetComponent<GameStateData>();
             _stateMachine = new StateMachine<GameStateData>(_data);
             _data.GoToState = _stateMachine.ChangeState;
+            _data.Runner = this;
         }
 
         private void Start()
