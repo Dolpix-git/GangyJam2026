@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CardGame.Abilities;
 using CardGame.Abilities.Actions;
+using CardGame.Card;
 using CardGame.Data;
 using CardGame.Player;
 using UnityEngine;
@@ -48,6 +49,9 @@ namespace CardGame.StateMachine.Game.States
                 var deck = playerObj.GetComponent<PlayerDeck>();
                 for (var j = 0; j < CardsPerDeck; j++)
                 {
+                    var newCard = CardFactory.Instance.CreateCard("ExampleCard");
+                    deck.AddCard(newCard);
+
                     //ToDo Implement loading cards into the player deck
                 }
                 
