@@ -69,7 +69,6 @@ namespace CardGame.StateMachine.Game.States
                     abilityData.RunAbility(abilityIndex, actionCtx, () => done++);
                 }
 
-                // Wait for all cards in this speed group to finish before moving on.
                 yield return new WaitUntil(() => done >= total);
             }
 
@@ -77,8 +76,6 @@ namespace CardGame.StateMachine.Game.States
             ctx.GoToState(new DrawState());
         }
 
-        // Collects all cards from both boards, sorts by speed descending,
-        // and groups ties together so they execute simultaneously.
         private static List<List<BattleEntry>> BuildSpeedGroups(GameStateData ctx)
         {
             var entries = new List<BattleEntry>();

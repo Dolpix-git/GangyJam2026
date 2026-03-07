@@ -44,38 +44,34 @@ namespace CardGame.Card
             card.GetComponent<CardIdentity>().Initialize(cardJson.CardId, cardJson.CardName, cardJson.Description);
             card.GetComponent<HealthData>().Initialize(cardJson.MaxHealth);
             card.GetComponent<SpeedData>().Initialize(cardJson.Speed);
+            card.GetComponent<StruggleData>().Initialize(cardJson.StruggleDamage);
             card.GetComponent<AbilityData>().Initialize(LoadAbilities(cardDir));
 
             return card;
         }
 
-        private static List<ActionPipeline> LoadAbilities(string cardDir)
+        private static List<Ability> LoadAbilities(string cardDir)
         {
             var abilitiesDir = Path.Combine(cardDir, "Abilities");
             if (!Directory.Exists(abilitiesDir))
-            {
-                return new List<ActionPipeline>();
-            }
+                return new List<Ability>();
 
-            var pipelines = new List<ActionPipeline>();
+            var abilities = new List<Ability>();
 
             foreach (var file in Directory.GetFiles(abilitiesDir, "*.json"))
             {
                 var abilityJson = LoadJson<AbilityJson>(file);
-                if (abilityJson == null)
-                {
-                    continue;
-                }
+                if (abilityJson == null) continue;
 
                 var actions = abilityJson.Steps
                     .Select(s => s.Action)
                     .Where(a => a != null)
                     .ToList();
 
-                pipelines.Add(new ActionPipeline(actions));
+                abilities.Add(new Ability(new ActionPipeline(actions), abilityJson.MaxPP));
             }
 
-            return pipelines;
+            return abilities;
         }
 
         private static T LoadJson<T>(string path) where T : class

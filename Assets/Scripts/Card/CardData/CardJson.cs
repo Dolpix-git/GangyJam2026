@@ -8,5 +8,6 @@ namespace CardGame.Card.CardData
         public string Description;
         public int MaxHealth;
         public int Speed;
+        public int StruggleDamage;
     }
 }

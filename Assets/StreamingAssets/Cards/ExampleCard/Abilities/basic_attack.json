@@ -1,4 +1,5 @@
 {
+    "MaxPP": 3,
     "Steps": [
         {
             "Type": "DamageAction",

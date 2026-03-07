@@ -58,7 +58,7 @@ namespace CardGame.StateMachine.Game.States
                 _activePlayer++;
             }
 
-            ctx.GoToState(new ModeState());
+            ctx.GoToState(new StruggleState());
         }
 
         private void TryRetreat(GameStateData ctx, int playerIndex, int slotIndex)

@@ -144,7 +144,7 @@ namespace CardGame.StateMachine.Game.States
 
                 var card = hand.RemoveAt(_selectedHandIndex);
                 board.TryPlaceCard(card, i);
-                card.GetComponent<CardDeathHandler>().Initialize(playerObj);
+                card.GetComponent<CardDeathSystem>().Initialize(playerObj);
 
                 var identity = card.GetComponent<CardIdentity>();
                 Debug.Log(
