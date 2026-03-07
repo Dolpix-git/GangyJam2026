@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using Events;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CardGame.Player
 {
@@ -9,9 +12,12 @@ namespace CardGame.Player
 
         public int Count => _cards.Count;
 
+        public event Action OnDeckChanged;
+
         public void AddCard(GameObject card)
         {
             _cards.Add(card);
+            OnDeckChanged?.Invoke();
         }
 
         public void Shuffle()

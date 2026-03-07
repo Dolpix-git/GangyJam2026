@@ -37,11 +37,9 @@ namespace CardGame.StateMachine.Game.States
 
         private void SpawnPlayers(GameStateData ctx)
         {
-            ctx.Players.Clear();
-
-            for (var i = 0; i < PlayerCount; i++)
+            for (var i = 0; i < ctx.Players.Count; i++)
             {
-                var playerObj = Object.Instantiate(ctx.PlayerPrefab);
+                var playerObj = ctx.Players[i];
                 playerObj.name = $"Player{i + 1}";
 
                 var playerData = playerObj.GetComponent<PlayerData>();
@@ -52,9 +50,8 @@ namespace CardGame.StateMachine.Game.States
                 {
                     //ToDo Implement loading cards into the player deck
                 }
-
-                ctx.Players.Add(playerObj);
-                Debug.Log($"[EnterGame] Spawned {playerData.PlayerName} with {CardsPerDeck} cards in deck.");
+                
+                Debug.Log($"[EnterGame] Initialized {playerData.PlayerName} with {CardsPerDeck} cards in deck.");
             }
         }
     }
