@@ -50,54 +50,12 @@ namespace CardGame.StateMachine.Game.States
                 var deck = playerObj.GetComponent<PlayerDeck>();
                 for (var j = 0; j < CardsPerDeck; j++)
                 {
-                    var card = Object.Instantiate(ctx.CardPrefab);
-                    card.name = $"Card_P{i + 1}_{j + 1}";
-                    RandomiseCard(card);
-                    deck.AddCard(card);
+                    //ToDo Implement loading cards into the player deck
                 }
 
                 ctx.Players.Add(playerObj);
                 Debug.Log($"[EnterGame] Spawned {playerData.PlayerName} with {CardsPerDeck} cards in deck.");
             }
-        }
-
-        // TODO: Remove once JSON card loading is implemented.
-        private static void RandomiseCard(GameObject card)
-        {
-            var name = CardNames[Random.Range(0, CardNames.Length)];
-            var health = Random.Range(3, 10);
-            var speed = Random.Range(1, 6);
-
-            card.GetComponent<CardIdentity>().Initialize(name.ToLower(), name, string.Empty);
-            card.GetComponent<HealthData>().Initialize(health);
-            card.GetComponent<SpeedData>().Initialize(speed);
-
-            var pipeline = Random.value > 0.5f ? BuildDamageAbility() : BuildHealAbility();
-            card.GetComponent<AbilityData>().Initialize(new List<ActionPipeline> { pipeline });
-
-            Debug.Log($"[EnterGame] Card '{name}' — HP:{health} SPD:{speed}");
-        }
-
-        private static ActionPipeline BuildDamageAbility()
-        {
-            var damage = Random.Range(1, 5);
-            var wait = Random.Range(0.3f, 1.0f);
-            return new ActionPipeline(new List<IAction>
-            {
-                new WaitAction(wait),
-                new DamageAction(damage)
-            });
-        }
-
-        private static ActionPipeline BuildHealAbility()
-        {
-            var amount = Random.Range(1, 4);
-            var wait = Random.Range(0.3f, 1.0f);
-            return new ActionPipeline(new List<IAction>
-            {
-                new WaitAction(wait),
-                new HealAction(amount)
-            });
         }
     }
 }

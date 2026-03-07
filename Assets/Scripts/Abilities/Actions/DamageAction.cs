@@ -1,18 +1,14 @@
 using System;
 using CardGame.Data;
 using CardGame.Player;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace CardGame.Abilities.Actions
 {
     public class DamageAction : IAction
     {
-        private readonly int _damage;
-
-        public DamageAction(int damage)
-        {
-            _damage = damage;
-        }
+        [JsonProperty] private int _damage;
 
         public void Execute(ActionContext ctx, Action onComplete)
         {

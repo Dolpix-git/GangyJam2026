@@ -1,36 +1,92 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using CardGame.Abilities;
+using CardGame.Card.CardData;
 using CardGame.Data;
-using CardGame.ScriptableObjects;
+using CardGame.Patterns;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace CardGame.Card
 {
-    public class CardFactory : MonoBehaviour
+    public class CardFactory : MonoSingleton<CardFactory>
     {
+        private static readonly JsonSerializerSettings _settings = new()
+        {
+            Converters = { new ActionStepConverter() }
+        };
+
         [SerializeField] private GameObject _cardPrefab;
 
-        public GameObject CreateCard(CardDefinition definition)
+        private static string CardsRoot => Path.Combine(Application.streamingAssetsPath, "Cards");
+
+        public GameObject CreateCard(string cardName)
         {
-            if (definition == null)
+            var cardDir = Path.Combine(CardsRoot, cardName);
+
+            if (!Directory.Exists(cardDir))
             {
-                Debug.LogError("CardFactory: CardDefinition is null.");
+                Debug.LogError($"[CardFactory] No card folder found for '{cardName}' at {cardDir}");
+                return null;
+            }
+
+            var cardJson = LoadJson<CardJson>(Path.Combine(cardDir, "card.json"));
+            if (cardJson == null)
+            {
+                Debug.LogError($"[CardFactory] Missing card.json for '{cardName}'");
                 return null;
             }
 
             var card = Instantiate(_cardPrefab);
-            card.name = definition.cardName;
+            card.name = cardName;
 
-            card.GetComponent<CardIdentity>().Initialize(
-                definition.cardId,
-                definition.cardName,
-                definition.description
-            );
-            card.GetComponent<HealthData>().Initialize(definition.health);
-            card.GetComponent<SpeedData>().Initialize(definition.speed);
-            card.GetComponent<AbilityData>().Initialize(new List<ActionPipeline>());
+            card.GetComponent<CardIdentity>().Initialize(cardJson.CardId, cardJson.CardName, cardJson.Description);
+            card.GetComponent<HealthData>().Initialize(cardJson.MaxHealth);
+            card.GetComponent<SpeedData>().Initialize(cardJson.Speed);
+            card.GetComponent<AbilityData>().Initialize(LoadAbilities(cardDir));
 
             return card;
+        }
+
+        private static List<ActionPipeline> LoadAbilities(string cardDir)
+        {
+            var abilitiesDir = Path.Combine(cardDir, "Abilities");
+            if (!Directory.Exists(abilitiesDir))
+            {
+                return new List<ActionPipeline>();
+            }
+
+            var pipelines = new List<ActionPipeline>();
+
+            foreach (var file in Directory.GetFiles(abilitiesDir, "*.json"))
+            {
+                var abilityJson = LoadJson<AbilityJson>(file);
+                if (abilityJson == null)
+                {
+                    continue;
+                }
+
+                var actions = abilityJson.Steps
+                    .Select(s => s.Action)
+                    .Where(a => a != null)
+                    .ToList();
+
+                pipelines.Add(new ActionPipeline(actions));
+            }
+
+            return pipelines;
+        }
+
+        private static T LoadJson<T>(string path) where T : class
+        {
+            if (!File.Exists(path))
+            {
+                Debug.LogWarning($"[CardFactory] File not found: {path}");
+                return null;
+            }
+
+            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path), _settings);
         }
     }
 }

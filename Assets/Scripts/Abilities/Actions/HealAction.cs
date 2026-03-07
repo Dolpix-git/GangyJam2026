@@ -1,17 +1,13 @@
 using System;
 using CardGame.Data;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace CardGame.Abilities.Actions
 {
     public class HealAction : IAction
     {
-        private readonly int _amount;
-
-        public HealAction(int amount)
-        {
-            _amount = amount;
-        }
+        [JsonProperty] private int _amount;
 
         public void Execute(ActionContext ctx, Action onComplete)
         {

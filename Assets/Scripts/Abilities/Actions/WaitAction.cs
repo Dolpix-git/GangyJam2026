@@ -1,17 +1,13 @@
 using System;
 using System.Collections;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace CardGame.Abilities.Actions
 {
     public class WaitAction : IAction
     {
-        private readonly float _seconds;
-
-        public WaitAction(float seconds)
-        {
-            _seconds = seconds;
-        }
+        [JsonProperty] private float _seconds;
 
         public void Execute(ActionContext ctx, Action onComplete)
         {

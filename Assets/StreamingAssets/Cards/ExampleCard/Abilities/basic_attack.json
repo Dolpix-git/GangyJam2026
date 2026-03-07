@@ -1,0 +1,10 @@
+{
+    "Steps": [
+        {
+            "Type": "DamageAction",
+            "Data": {
+                "Amount": 3
+            }
+        }
+    ]
+}

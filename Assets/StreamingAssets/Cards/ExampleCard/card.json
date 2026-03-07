@@ -1,0 +1,7 @@
+{
+    "CardId": "example_card_001",
+    "CardName": "Example Card",
+    "Description": "A basic example card.",
+    "MaxHealth": 10,
+    "Speed": 5
+}
