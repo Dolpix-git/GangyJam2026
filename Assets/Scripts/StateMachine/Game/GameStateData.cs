@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CardGame.Player.Controllers;
 using UnityEngine;
 
 namespace CardGame.StateMachine.Game
@@ -17,5 +18,7 @@ namespace CardGame.StateMachine.Game
 
         public Action<IState<GameStateData>> GoToState { get; set; }
         public MonoBehaviour Runner { get; set; }
+
+        public IPlayerController[] Controllers { get; set; }
     }
 }

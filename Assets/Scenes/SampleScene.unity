@@ -1779,9 +1779,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewBoard
   modelView: {fileID: 1430722749}
   _boardSlot:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1021417482}
+  - {fileID: 417643041}
+  - {fileID: 609459131}
 --- !u!114 &1430722749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1938,6 +1938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 066f1106f6d3e034384d052160aab517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardGame.StateMachine.Game.GameStateRunner
+  _player1Controller: 0
+  _player2Controller: 1
 --- !u!114 &1621091473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,9 +2180,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewBoard
   modelView: {fileID: 1766619978}
   _boardSlot:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 556748336}
+  - {fileID: 1543846563}
+  - {fileID: 147187665}
 --- !u!114 &1766619978
 MonoBehaviour:
   m_ObjectHideFlags: 0
