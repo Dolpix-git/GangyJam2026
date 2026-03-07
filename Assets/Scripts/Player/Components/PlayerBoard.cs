@@ -63,6 +63,28 @@ namespace CardGame.Player
             return true;
         }
 
+        public void ShiftLeft()
+        {
+            var wrap = _slots[0];
+            for (var i = 0; i < BoardSize - 1; i++)
+            {
+                _slots[i] = _slots[i + 1];
+            }
+
+            _slots[BoardSize - 1] = wrap;
+        }
+
+        public void ShiftRight()
+        {
+            var wrap = _slots[BoardSize - 1];
+            for (var i = BoardSize - 1; i > 0; i--)
+            {
+                _slots[i] = _slots[i - 1];
+            }
+
+            _slots[0] = wrap;
+        }
+
         public GameObject RemoveAt(int slotIndex)
         {
             if (slotIndex is < 0 or >= BoardSize)
