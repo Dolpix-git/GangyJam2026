@@ -40,6 +40,15 @@ namespace CardGame.StateMachine.Game.States
 
                 foreach (var entry in group)
                 {
+                    var buffData = entry.Card.GetComponent<BuffData>();
+                    buffData?.TickAll();
+
+                    if (buffData != null && buffData.IsParalysed)
+                    {
+                        done++;
+                        continue;
+                    }
+
                     var abilityIndex = entry.Card.GetComponent<CardMode>().SelectedAbilityIndex;
                     if (abilityIndex < 0)
                     {
@@ -105,7 +114,10 @@ namespace CardGame.StateMachine.Game.States
                 var group = new List<BattleEntry> { entries[i] };
                 var j = i + 1;
                 while (j < entries.Count && entries[j].Speed == entries[i].Speed)
+                {
                     group.Add(entries[j++]);
+                }
+
                 groups.Add(group);
                 i = j;
             }

@@ -18,7 +18,8 @@ namespace CardGame.Abilities.Actions
                 var damageable = target.GetComponent<IDamageable>();
                 if (damageable != null)
                 {
-                    damageable.TakeDamage(_damage);
+                    var damage = ctx.Caster.GetComponent<BuffData>()?.ModifyOutgoingDamage(_damage) ?? _damage;
+                    damageable.TakeDamage(damage);
                 }
                 else
                 {

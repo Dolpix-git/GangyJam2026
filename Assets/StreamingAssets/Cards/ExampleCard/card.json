@@ -4,5 +4,6 @@
     "Description": "A basic example card.",
     "MaxHealth": 10,
     "Speed": 5,
-    "StruggleDamage": 2
+    "StruggleDamage": 2,
+    "Tags": []
 }

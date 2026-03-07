@@ -15,6 +15,17 @@ namespace CardGame.Data
                 return;
             }
 
+            var buffData = GetComponent<BuffData>();
+            if (buffData != null)
+            {
+                amount = buffData.AbsorbIncomingDamage(amount);
+            }
+
+            if (amount <= 0)
+            {
+                return;
+            }
+
             _currentHealth = Mathf.Max(0, _currentHealth - amount);
             Debug.Log($"[Health] {gameObject.name} took {amount} damage. HP: {_currentHealth}/{_maxHealth}");
             OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
