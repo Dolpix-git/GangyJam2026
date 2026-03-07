@@ -8,15 +8,16 @@ namespace CardGame.Abilities.Actions
     public class DamageAction : IAction
     {
         [JsonProperty] private int _damage;
+        [JsonProperty] private TargetSlot _target = TargetSlot.EnemyOpposing;
 
         public void Execute(ActionContext ctx, Action onComplete)
         {
             var damage = ctx.Caster.GetComponent<BuffData>()?.ModifyOutgoingDamage(_damage) ?? _damage;
-            var targets = ActionTargeting.Resolve(ctx, TargetSlot.EnemyOpposing);
+            var targets = ActionTargeting.Resolve(ctx, _target);
 
             if (targets.Count == 0)
             {
-                Debug.Log("DamageAction: No card in opposing slot — no damage dealt.");
+                Debug.Log("DamageAction: No targets found — no damage dealt.");
             }
 
             foreach (var target in targets)
@@ -28,7 +29,7 @@ namespace CardGame.Abilities.Actions
                 }
                 else
                 {
-                    Debug.LogWarning("DamageAction: Target has no IDamageable component.");
+                    Debug.LogWarning($"DamageAction: '{target.name}' has no IDamageable component.");
                 }
             }
 

@@ -18,7 +18,9 @@ namespace CardGame.Abilities
                 TargetSlot.EnemyLeft => Single(GetEnemySlot(ctx, ctx.CasterSlotIndex - 1)),
                 TargetSlot.EnemyRight => Single(GetEnemySlot(ctx, ctx.CasterSlotIndex + 1)),
                 TargetSlot.EnemyBoth => GetFlankingCards(ctx),
-                _ => new List<GameObject>()
+                TargetSlot.AllFriendly => GetAllCards(ctx, ctx.CasterPlayerIndex),
+                TargetSlot.AllEnemy => GetAllCards(ctx, ctx.CasterPlayerIndex == 0 ? 1 : 0),
+                TargetSlot.All => GetAllCards(ctx)
             };
         }
 
@@ -103,6 +105,51 @@ namespace CardGame.Abilities
             }
 
             return ctx.GameState.Players[ctx.CasterPlayerIndex].GetComponent<PlayerBoard>();
+        }
+
+        private static List<GameObject> GetAllCards(ActionContext ctx, int playerIndex)
+        {
+            if (ctx.GameState == null)
+            {
+                return new List<GameObject>();
+            }
+
+            var targets = new List<GameObject>();
+            var board = ctx.GameState.Players[playerIndex].GetComponent<PlayerBoard>();
+            for (var i = 0; i < PlayerBoard.BoardSize; i++)
+            {
+                var card = board.GetSlot(i);
+                if (card != null)
+                {
+                    targets.Add(card);
+                }
+            }
+
+            return targets;
+        }
+
+        private static List<GameObject> GetAllCards(ActionContext ctx)
+        {
+            if (ctx.GameState == null)
+            {
+                return new List<GameObject>();
+            }
+
+            var targets = new List<GameObject>();
+            foreach (var player in ctx.GameState.Players)
+            {
+                var board = player.GetComponent<PlayerBoard>();
+                for (var i = 0; i < PlayerBoard.BoardSize; i++)
+                {
+                    var card = board.GetSlot(i);
+                    if (card != null)
+                    {
+                        targets.Add(card);
+                    }
+                }
+            }
+
+            return targets;
         }
 
         private static List<GameObject> Single(GameObject card)

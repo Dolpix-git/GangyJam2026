@@ -8,19 +8,27 @@ namespace CardGame.Abilities.Actions
     public class HealAction : IAction
     {
         [JsonProperty] private int _amount;
+        [JsonProperty] private TargetSlot _target = TargetSlot.Self;
 
         public void Execute(ActionContext ctx, Action onComplete)
         {
-            if (ctx.Caster != null)
+            var targets = ActionTargeting.Resolve(ctx, _target);
+
+            if (targets.Count == 0)
             {
-                var healable = ctx.Caster.GetComponent<IHealable>();
+                Debug.Log("HealAction: No targets found — no healing applied.");
+            }
+
+            foreach (var target in targets)
+            {
+                var healable = target.GetComponent<IHealable>();
                 if (healable != null)
                 {
                     healable.Heal(_amount);
                 }
                 else
                 {
-                    Debug.LogWarning("HealAction: Caster has no IHealable component.");
+                    Debug.LogWarning($"HealAction: '{target.name}' has no IHealable component.");
                 }
             }
 

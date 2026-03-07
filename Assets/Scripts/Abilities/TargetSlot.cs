@@ -10,5 +10,8 @@ namespace CardGame.Abilities
         EnemyLeft,
         EnemyRight,
         EnemyBoth,
+        AllFriendly,
+        AllEnemy,
+        All
     }
 }
