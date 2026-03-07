@@ -1,0 +1,13 @@
+{
+  "Name": "fucking shoves",
+  "MaxPP": 10,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 1,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

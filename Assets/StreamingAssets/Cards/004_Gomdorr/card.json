@@ -1,0 +1,9 @@
+{
+  "CardId": "004_Gomdorr",
+  "CardName": "Gomdorr",
+  "Description": "Wide boy with a bubbly personality. Favorite meal: Snowcubes",
+  "MaxHealth": 10,
+  "Speed": 3,
+  "StruggleDamage": 3,
+  "Tags": []
+}
