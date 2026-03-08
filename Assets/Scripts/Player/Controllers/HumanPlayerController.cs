@@ -30,7 +30,7 @@ namespace CardGame.Player.Controllers
             if (hand.Count == 0)
             {
                 Debug.Log($"[Play] Player {playerIndex + 1} has no cards in hand — auto-passing.");
-                onDone();
+                Finish(onDone);
                 return;
             }
 
@@ -78,14 +78,25 @@ namespace CardGame.Player.Controllers
 
                 Debug.Log(
                     $"[Play] Player {playerIndex + 1} placed '{card.GetComponent<CardIdentity>()?.CardName}' in slot {slotIndex + 1}.");
-
+            }
+            
+            void TryProgress(ProgressButtonClickedEvent evt)
+            {
+                if (IsBoardEmpty(board))
+                {
+                    Debug.Log("[Play] Must play — board is empty!");
+                    return;
+                }
+                
                 EventBus.Unsubscribe<CardDropOnSlotEvent>(ReactToPlay);
                 EventBus.Unsubscribe<CardBeginDragEvent>(BeginDrag);
+                EventBus.Unsubscribe<ProgressButtonClickedEvent>(TryProgress);
                 Finish(onDone);
             }
 
             EventBus.Subscribe<CardDropOnSlotEvent>(ReactToPlay);
             EventBus.Subscribe<CardBeginDragEvent>(BeginDrag);
+            EventBus.Subscribe<ProgressButtonClickedEvent>(TryProgress);
 
             _updateAction = () =>
             {
@@ -161,17 +172,16 @@ namespace CardGame.Player.Controllers
             var board = playerObj.GetComponent<PlayerBoard>();
             var hand = playerObj.GetComponent<PlayerHand>();
             var selectedCardBoardIndex = -1;
-
-
-            LogRetreatPrompt(playerIndex, board);
             
+            LogRetreatPrompt(playerIndex, board);
+
             void BeginDrag(CardBeginDragEvent evt)
             {
                 var cardUiObj = evt.DragHandler.GetComponent<ModelViewCard>();
                 var cardModel = cardUiObj.Model;
                 selectedCardBoardIndex = board.GetIndex(cardModel);
             }
-            
+
             void ReactToRetreat(CardDropOnSlotEvent evt)
             {
                 if (CardCount(board) == 1)
@@ -179,7 +189,7 @@ namespace CardGame.Player.Controllers
                     Debug.Log("[Retreat] Need at least one card.");
                     return;
                 }
-                
+
                 if (selectedCardBoardIndex == -1)
                 {
                     Debug.Log("[Play] No card selected.");
@@ -205,14 +215,19 @@ namespace CardGame.Player.Controllers
                 Debug.Log(
                     $"[Retreat] Player {playerIndex + 1} retreated '{card.GetComponent<CardIdentity>()?.CardName}' from slot {selectedCardBoardIndex + 1}.");
                 LogRetreatPrompt(playerIndex, board);
-                
-                EventBus.Unsubscribe<CardDropOnSlotEvent>(ReactToRetreat);
-                EventBus.Unsubscribe<CardBeginDragEvent>(BeginDrag);
-                Finish(onDone);
             }
             
+            void TryProgress(ProgressButtonClickedEvent evt)
+            {
+                EventBus.Unsubscribe<CardDropOnSlotEvent>(ReactToRetreat);
+                EventBus.Unsubscribe<CardBeginDragEvent>(BeginDrag);
+                EventBus.Unsubscribe<ProgressButtonClickedEvent>(TryProgress);
+                Finish(onDone);
+            }
+
             EventBus.Subscribe<CardDropOnSlotEvent>(ReactToRetreat);
             EventBus.Subscribe<CardBeginDragEvent>(BeginDrag);
+            EventBus.Subscribe<ProgressButtonClickedEvent>(TryProgress);
 
             _updateAction = () =>
             {
@@ -264,7 +279,7 @@ namespace CardGame.Player.Controllers
                 {
                     continue;
                 }
-                
+
                 var abilities = card.GetComponent<AbilityData>();
                 if (abilities == null || abilities.Abilities.Count == 0)
                 {
