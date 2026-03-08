@@ -1,0 +1,11 @@
+{
+  "CardId": "025_ThePermafrostKing",
+  "CardName": "The Permafrost King",
+  "Description": "Ancient ruler of the deep freeze. Commands the battlefield itself, locking the world in permanent winter.",
+  "MaxHealth": 18,
+  "Speed": 6,
+  "StruggleDamage": 2,
+  "Rarity": "Epic",
+  "Cost": 9,
+  "Tags": []
+}

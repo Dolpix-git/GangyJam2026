@@ -1,0 +1,22 @@
+{
+  "Name": "The Last Winter",
+  "MaxPP": 1,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyLeft" }
+    },
+    {
+      "Type": "ApplyFrostAction",
+      "Data": { "_stacks": 6, "_target": "AllEnemy" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 5, "_target": "AllEnemy" }
+    },
+    {
+      "Type": "HealAction",
+      "Data": { "_amount": 4, "_target": "AllFriendly" }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "CardId": "020_GlacierCrab",
+  "CardName": "Glacier Crab",
+  "Description": "A crab encased in centuries of ice. Sidesteps the entire battlefield and hides behind a frozen shell.",
+  "MaxHealth": 12,
+  "Speed": 4,
+  "StruggleDamage": 2,
+  "Rarity": "Uncommon",
+  "Cost": 4,
+  "Tags": []
+}

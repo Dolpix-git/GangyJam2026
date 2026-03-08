@@ -1,0 +1,11 @@
+{
+  "CardId": "026_TheGlacialEnd",
+  "CardName": "The Glacial End",
+  "Description": "The inevitable conclusion of all warmth. Time slows. Ice wins. Everything ends quietly.",
+  "MaxHealth": 20,
+  "Speed": 9,
+  "StruggleDamage": 2,
+  "Rarity": "Legendary",
+  "Cost": 14,
+  "Tags": []
+}

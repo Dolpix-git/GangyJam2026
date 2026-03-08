@@ -1,0 +1,18 @@
+{
+  "Name": "Bounce Barrage",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 1, "_target": "AllEnemy" }
+    },
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyRight" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 1, "_target": "AllEnemy" }
+    }
+  ]
+}

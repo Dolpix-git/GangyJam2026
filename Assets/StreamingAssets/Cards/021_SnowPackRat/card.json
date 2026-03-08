@@ -1,0 +1,11 @@
+{
+  "CardId": "021_SnowPackRat",
+  "CardName": "Snow Pack Rat",
+  "Description": "Hoards frost like treasure. Dumps its entire stash onto whoever dares look at it.",
+  "MaxHealth": 9,
+  "Speed": 6,
+  "StruggleDamage": 1,
+  "Rarity": "Uncommon",
+  "Cost": 4,
+  "Tags": []
+}

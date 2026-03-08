@@ -1,0 +1,18 @@
+{
+  "Name": "Glacial Decree",
+  "MaxPP": 5,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyLeft" }
+    },
+    {
+      "Type": "ApplyFrostAction",
+      "Data": { "_stacks": 4, "_target": "AllEnemy" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 2, "_target": "AllEnemy" }
+    }
+  ]
+}

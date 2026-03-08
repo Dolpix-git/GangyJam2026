@@ -1,0 +1,18 @@
+{
+  "Name": "Soul Drain",
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "ApplyParalysisAction",
+      "Data": { "_stacks": 2, "_target": "EnemyOpposing" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 3, "_target": "EnemyOpposing" }
+    },
+    {
+      "Type": "HealAction",
+      "Data": { "_amount": 2, "_target": "Self" }
+    }
+  ]
+}

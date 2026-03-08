@@ -1,0 +1,14 @@
+{
+  "Name": "Absolute Stillness",
+  "MaxPP": 5,
+  "Steps": [
+    {
+      "Type": "ApplyParalysisAction",
+      "Data": { "_stacks": 3, "_target": "AllEnemy" }
+    },
+    {
+      "Type": "ApplyFrostAction",
+      "Data": { "_stacks": 5, "_target": "AllEnemy" }
+    }
+  ]
+}

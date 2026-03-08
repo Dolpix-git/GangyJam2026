@@ -1,0 +1,11 @@
+{
+  "CardId": "024_NorthernWraith",
+  "CardName": "Northern Wraith",
+  "Description": "A spectre born from arctic winds. Paralyses its prey, then siphons their warmth to mend itself.",
+  "MaxHealth": 11,
+  "Speed": 8,
+  "StruggleDamage": 1,
+  "Rarity": "Rare",
+  "Cost": 7,
+  "Tags": []
+}

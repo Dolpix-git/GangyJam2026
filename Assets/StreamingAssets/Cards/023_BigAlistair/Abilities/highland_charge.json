@@ -1,0 +1,18 @@
+{
+  "Name": "Highland Charge",
+  "MaxPP": 5,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyRight" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 4, "_target": "EnemyOpposing" }
+    },
+    {
+      "Type": "ApplyFrostAction",
+      "Data": { "_stacks": 2, "_target": "EnemyOpposing" }
+    }
+  ]
+}

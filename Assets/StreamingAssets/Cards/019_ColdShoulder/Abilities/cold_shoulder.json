@@ -1,0 +1,14 @@
+{
+  "Name": "Cold Shoulder",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "HealAction",
+      "Data": { "_amount": 3, "_target": "Self" }
+    },
+    {
+      "Type": "ApplyFrostAction",
+      "Data": { "_stacks": 2, "_target": "EnemyOpposing" }
+    }
+  ]
+}

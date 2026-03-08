@@ -1,0 +1,11 @@
+{
+  "CardId": "022_FrostFerret",
+  "CardName": "Frost Ferret",
+  "Description": "Lightning-fast and absolutely unhinged. Zips across the field, bites everything in sight, then vanishes into the frost.",
+  "MaxHealth": 7,
+  "Speed": 10,
+  "StruggleDamage": 1,
+  "Rarity": "Uncommon",
+  "Cost": 5,
+  "Tags": []
+}

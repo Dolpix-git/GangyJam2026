@@ -1,0 +1,14 @@
+{
+  "Name": "Arctic Haunt",
+  "MaxPP": 5,
+  "Steps": [
+    {
+      "Type": "ApplyFrostAction",
+      "Data": { "_stacks": 3, "_target": "AllEnemy" }
+    },
+    {
+      "Type": "ApplyParalysisAction",
+      "Data": { "_stacks": 1, "_target": "AllEnemy" }
+    }
+  ]
+}

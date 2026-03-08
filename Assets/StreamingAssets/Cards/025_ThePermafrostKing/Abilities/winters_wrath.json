@@ -1,0 +1,18 @@
+{
+  "Name": "Winter's Wrath",
+  "MaxPP": 6,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyRight" }
+    },
+    {
+      "Type": "ApplyParalysisAction",
+      "Data": { "_stacks": 2, "_target": "AllEnemy" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 4, "_target": "EnemyOpposing" }
+    }
+  ]
+}

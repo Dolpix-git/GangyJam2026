@@ -1,0 +1,18 @@
+{
+  "Name": "Terminus Shift",
+  "MaxPP": 6,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyLeft" }
+    },
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyRight" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 3, "_target": "AllEnemy" }
+    }
+  ]
+}

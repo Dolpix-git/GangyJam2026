@@ -1,0 +1,14 @@
+{
+  "Name": "Slippery Slide",
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "EnemyLeft" }
+    },
+    {
+      "Type": "DamageAction",
+      "Data": { "_damage": 1, "_target": "AllEnemy" }
+    }
+  ]
+}

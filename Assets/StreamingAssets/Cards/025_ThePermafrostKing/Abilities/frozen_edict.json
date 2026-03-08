@@ -1,0 +1,10 @@
+{
+  "Name": "Frozen Edict",
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "ApplyDamageAmpAction",
+      "Data": { "_stacks": 3, "_target": "AllFriendly" }
+    }
+  ]
+}

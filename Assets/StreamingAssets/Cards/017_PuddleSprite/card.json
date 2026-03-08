@@ -1,0 +1,11 @@
+{
+  "CardId": "017_PuddleSprite",
+  "CardName": "Puddle Sprite",
+  "Description": "A mischievous spirit that lives in half-frozen puddles. Skids under enemy lines and shoves everything sideways.",
+  "MaxHealth": 8,
+  "Speed": 7,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Cost": 2,
+  "Tags": []
+}

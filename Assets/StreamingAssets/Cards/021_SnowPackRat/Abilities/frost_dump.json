@@ -1,0 +1,10 @@
+{
+  "Name": "Frost Dump",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ApplyFrostAction",
+      "Data": { "_stacks": 4, "_target": "AllEnemy" }
+    }
+  ]
+}

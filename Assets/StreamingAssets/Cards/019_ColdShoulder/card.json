@@ -1,0 +1,11 @@
+{
+  "CardId": "019_ColdShoulder",
+  "CardName": "Cold Shoulder",
+  "Description": "A walking block of attitude. Turns its back on enemies and heals from the silence.",
+  "MaxHealth": 10,
+  "Speed": 3,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Cost": 2,
+  "Tags": []
+}

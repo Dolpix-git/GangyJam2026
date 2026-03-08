@@ -1,0 +1,11 @@
+{
+  "CardId": "018_HailPebble",
+  "CardName": "Hail Pebble",
+  "Description": "A perfectly round ball of hail that refuses to stop bouncing. Every enemy gets a turn.",
+  "MaxHealth": 6,
+  "Speed": 5,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Cost": 2,
+  "Tags": []
+}

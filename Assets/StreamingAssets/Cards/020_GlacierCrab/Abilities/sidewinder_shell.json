@@ -1,0 +1,14 @@
+{
+  "Name": "Sidewinder Shell",
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": { "_target": "FriendlyRight" }
+    },
+    {
+      "Type": "ApplyShieldAction",
+      "Data": { "_amount": 4, "_target": "Self" }
+    }
+  ]
+}

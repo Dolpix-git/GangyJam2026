@@ -1,0 +1,11 @@
+{
+  "CardId": "023_BigAlistair",
+  "CardName": "Big Alistair",
+  "Description": "Aye, he's a big lad. Hauls himself across the battlefield and body-slams anyone daft enough to stand in his way.",
+  "MaxHealth": 16,
+  "Speed": 5,
+  "StruggleDamage": 3,
+  "Rarity": "Rare",
+  "Cost": 6,
+  "Tags": []
+}
