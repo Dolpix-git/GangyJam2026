@@ -10,5 +10,8 @@ namespace CardGame.StateMachine.Explore
         public ShopComponent Shop;
         public Action<IState<ExploreStateData>> GoToState { get; set; }
         public RunContext Run => RunContext.Instance;
+
+        public GameObject BuyMenu;
+        public GameObject CombineCardsMenu;
     }
 }

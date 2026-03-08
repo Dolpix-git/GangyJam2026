@@ -271,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &344168850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -697,6 +697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardGame.StateMachine.Explore.ExploreStateData
   Shop: {fileID: 666511342}
+  BuyMenu: {fileID: 344168849}
+  CombineCardsMenu: {fileID: 2136795546}
 --- !u!1 &1621340919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2136795547
 RectTransform:
   m_ObjectHideFlags: 0
