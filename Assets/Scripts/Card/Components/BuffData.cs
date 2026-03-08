@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CardGame.Buffs;
@@ -11,7 +12,11 @@ namespace CardGame.Data
 
         public IReadOnlyList<IBuff> Buffs => _buffs;
 
+        public event Action OnBuffsChanged;
+
         public bool IsParalysed => _buffs.OfType<ParalysisBuff>().Any(b => !b.IsExpired);
+
+        public int TotalShield => _buffs.OfType<ShieldBuff>().Sum(s => s.CurrentAbsorb);
 
         public int ModifyOutgoingDamage(int baseDamage)
         {
@@ -37,6 +42,7 @@ namespace CardGame.Data
             }
 
             _buffs.RemoveAll(b => b.IsExpired);
+            OnBuffsChanged?.Invoke();
             return remaining;
         }
         
@@ -50,6 +56,7 @@ namespace CardGame.Data
             }
 
             _buffs.Add(buff);
+            OnBuffsChanged?.Invoke();
             return true;
         }
 

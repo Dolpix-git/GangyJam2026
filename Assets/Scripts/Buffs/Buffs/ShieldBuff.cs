@@ -8,6 +8,7 @@ namespace CardGame.Buffs
 
         public bool IsExpired => _absorb <= 0;
         public CardTag? ImmunityTag => null;
+        public int CurrentAbsorb => _absorb;
 
         public ShieldBuff(int absorb)
         {

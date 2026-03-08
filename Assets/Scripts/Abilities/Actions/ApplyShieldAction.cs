@@ -15,7 +15,8 @@ namespace CardGame.Abilities.Actions
 
         public void Execute(ActionContext ctx, Action onComplete)
         {
-            foreach (var card in ActionTargeting.Resolve(ctx, _target))
+            var targets = ActionTargeting.Resolve(ctx, _target);
+            foreach (var card in targets)
             {
                 var buffData = card.GetComponent<BuffData>();
                 if (buffData != null)

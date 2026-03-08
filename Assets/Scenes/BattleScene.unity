@@ -1327,6 +1327,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 777764518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &750678809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 750678810}
+  - component: {fileID: 750678811}
+  - component: {fileID: 750678812}
+  m_Layer: 0
+  m_Name: GameAnimations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &750678810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750678809}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777764518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &750678811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750678809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a12517b601531f4d8f02b05b016eeb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.UI.Battle.CardAnimator
+  _lungeDuration: 0.12
+  _returnDuration: 0.18
+  _lungeDistance: 60
+  _hitDuration: 0.18
+  _shakeStrength: 14
+  _shakeCount: 6
+  _betweenAttackPause: 0.45
+--- !u!114 &750678812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750678809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1cbc3ee8fb4544ab2fb568ef9b6355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.UI.Battle.CardAnimationRunner
 --- !u!1 &777764517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,6 +1423,7 @@ Transform:
   - {fileID: 637024448}
   - {fileID: 1768180464}
   - {fileID: 784493921}
+  - {fileID: 750678810}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784493920
@@ -2292,6 +2357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardGame.StateMachine.Game.GameStateData
   PlayerPrefab: {fileID: 7688493499716272214, guid: 48e62637338e3b5428850c68ab46a08b, type: 3}
   CardPrefab: {fileID: 8192913620483531119, guid: 6102b9454f8392e49a7d4f491599f586, type: 3}
+  CardAnimator: {fileID: 750678811}
   _players:
   - {fileID: 1922849796}
   - {fileID: 558709063}

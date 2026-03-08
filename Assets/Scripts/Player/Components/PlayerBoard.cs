@@ -8,9 +8,6 @@ namespace CardGame.Player
         public const int BoardSize = 3;
         private readonly GameObject[] _slots = new GameObject[BoardSize];
 
-        public event Action<GameObject, int> OnCardAdded;
-        public event Action<int> OnCardRemoved;
-
         public bool IsFull
         {
             get
@@ -42,6 +39,12 @@ namespace CardGame.Player
                 return false;
             }
         }
+
+        public event Action<GameObject, int> OnCardAdded;
+        public event Action<int> OnCardRemoved;
+
+        /// <summary>Fired after a shift. Carries the new slot contents (index → card, null if empty).</summary>
+        public event Action<GameObject[]> OnBoardShifted;
 
         public int GetIndex(GameObject obj)
         {
@@ -98,6 +101,8 @@ namespace CardGame.Player
             }
 
             _slots[BoardSize - 1] = wrap;
+
+            FireShiftEvents();
         }
 
         public void ShiftRight()
@@ -109,6 +114,21 @@ namespace CardGame.Player
             }
 
             _slots[0] = wrap;
+
+            FireShiftEvents();
+        }
+
+        private void FireShiftEvents()
+        {
+            for (var i = 0; i < BoardSize; i++)
+            {
+                if (_slots[i] != null)
+                {
+                    OnCardAdded?.Invoke(_slots[i], i);
+                }
+            }
+
+            OnBoardShifted?.Invoke((GameObject[])_slots.Clone());
         }
 
         public GameObject RemoveAt(int slotIndex)

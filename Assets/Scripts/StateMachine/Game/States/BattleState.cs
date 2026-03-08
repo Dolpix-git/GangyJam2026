@@ -76,13 +76,22 @@ namespace CardGame.StateMachine.Game.States
                         CasterPlayerIndex = entry.PlayerIndex,
                         CasterSlotIndex = entry.SlotIndex,
                         GameState = ctx,
-                        Runner = ctx.Runner
+                        Runner = ctx.Runner,
+                        Animator = ctx.CardAnimator
                     };
 
                     abilityData.RunAbility(abilityIndex, actionCtx, () => done++);
                 }
 
                 yield return new WaitUntil(() => done >= total);
+
+                // Pause between each speed group so the player can read what happened.
+                if (ctx.CardAnimator != null)
+                {
+                    var pauseDone = false;
+                    ctx.CardAnimator.PlayBetweenAttackPause(() => pauseDone = true);
+                    yield return new WaitUntil(() => pauseDone);
+                }
             }
 
             Debug.Log("[Battle] All abilities resolved.");
@@ -109,7 +118,7 @@ namespace CardGame.StateMachine.Game.States
                         Debug.LogError("Could not find CardMode");
                         continue;
                     }
-                    
+
                     cardMode.Clear();
                 }
             }

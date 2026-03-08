@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CardGame.Player.Controllers;
+using CardGame.UI.Battle;
 using UnityEngine;
 
 namespace CardGame.StateMachine.Game
@@ -9,8 +10,11 @@ namespace CardGame.StateMachine.Game
     {
         [Header("Prefabs")]
         [SerializeField] public GameObject PlayerPrefab;
-
         [SerializeField] public GameObject CardPrefab;
+
+        [Header("Battle")]
+        [SerializeField] public CardAnimator CardAnimator;
+
         [SerializeField] private List<GameObject> _players = new();
 
         [Header("Runtime")]

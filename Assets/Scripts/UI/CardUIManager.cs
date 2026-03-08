@@ -32,6 +32,12 @@ public class CardUIManager : MonoSingleton<CardUIManager>
         model.transform.localPosition = Vector3.zero;
     }
 
+    public ModelViewCard GetCardUI(GameObject cardModel)
+    {
+        _allCards.TryGetValue(cardModel, out var ui);
+        return ui;
+    }
+
     public void DestroyCard(GameObject cardModel)
     {
         if (cardModel == null)

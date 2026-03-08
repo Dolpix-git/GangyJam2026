@@ -35,7 +35,10 @@ namespace CardGame.Abilities.Actions
                 }
             }
 
-            onComplete();
+            if (ctx.Animator != null)
+                ctx.Animator.PlayAttack(ctx.Caster, targets.ToArray(), onComplete);
+            else
+                onComplete();
         }
     }
 }

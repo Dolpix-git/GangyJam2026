@@ -12,11 +12,13 @@ namespace CardGame.Abilities.Actions
         [JsonProperty] private TargetSlot _target;
         [JsonProperty] private int _turns;
 
-        public string Description => $"Boost {ActionEnumNames.Of(_target)} damage by {_multiplier}x for {_turns} turn(s).";
+        public string Description =>
+            $"Boost {ActionEnumNames.Of(_target)} damage by {_multiplier}x for {_turns} turn(s).";
 
         public void Execute(ActionContext ctx, Action onComplete)
         {
-            foreach (var card in ActionTargeting.Resolve(ctx, _target))
+            var targets = ActionTargeting.Resolve(ctx, _target);
+            foreach (var card in targets)
             {
                 var buffData = card.GetComponent<BuffData>();
                 if (buffData != null)
