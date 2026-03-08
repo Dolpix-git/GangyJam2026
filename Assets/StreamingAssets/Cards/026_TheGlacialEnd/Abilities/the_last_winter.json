@@ -4,19 +4,31 @@
   "Steps": [
     {
       "Type": "ShiftBoardAction",
-      "Data": { "_target": "EnemyLeft" }
+      "Data": {
+        "_target": "EnemyLeft"
+      }
     },
     {
       "Type": "ApplyFrostAction",
-      "Data": { "_stacks": 6, "_target": "AllEnemy" }
+      "Data": {
+        "_damagePerTurn": 6,
+        "_target": "AllEnemy",
+        "_turns": 2
+      }
     },
     {
       "Type": "DamageAction",
-      "Data": { "_damage": 5, "_target": "AllEnemy" }
+      "Data": {
+        "_damage": 5,
+        "_target": "AllEnemy"
+      }
     },
     {
       "Type": "HealAction",
-      "Data": { "_amount": 4, "_target": "AllFriendly" }
+      "Data": {
+        "_amount": 4,
+        "_target": "AllFriendly"
+      }
     }
   ]
 }

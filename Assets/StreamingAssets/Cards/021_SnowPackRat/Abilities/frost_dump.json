@@ -4,7 +4,11 @@
   "Steps": [
     {
       "Type": "ApplyFrostAction",
-      "Data": { "_stacks": 4, "_target": "AllEnemy" }
+      "Data": {
+        "_damagePerTurn": 2,
+        "_turns": 2,
+        "_target": "AllEnemy"
+      }
     }
   ]
 }

@@ -4,7 +4,11 @@
   "Steps": [
     {
       "Type": "ApplyDamageAmpAction",
-      "Data": { "_stacks": 3, "_target": "AllFriendly" }
+      "Data": {
+        "_multiplier": 2,
+        "_target": "AllFriendly",
+        "_turns": 2
+      }
     }
   ]
 }

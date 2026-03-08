@@ -8,7 +8,7 @@
     },
     {
       "Type": "ApplyParalysisAction",
-      "Data": { "_stacks": 2, "_target": "AllEnemy" }
+      "Data": { "_turns": 2, "_target": "AllEnemy" }
     },
     {
       "Type": "DamageAction",

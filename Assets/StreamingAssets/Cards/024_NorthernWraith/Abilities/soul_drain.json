@@ -4,7 +4,7 @@
   "Steps": [
     {
       "Type": "ApplyParalysisAction",
-      "Data": { "_stacks": 2, "_target": "EnemyOpposing" }
+      "Data": { "_turns": 2, "_target": "EnemyOpposing" }
     },
     {
       "Type": "DamageAction",

@@ -4,11 +4,18 @@
   "Steps": [
     {
       "Type": "ApplyFrostAction",
-      "Data": { "_stacks": 3, "_target": "AllEnemy" }
+      "Data": {
+        "_damagePerTurn": 3,
+        "_target": "EnemyOpposing",
+        "_turns": 2
+      }
     },
     {
       "Type": "ApplyParalysisAction",
-      "Data": { "_stacks": 1, "_target": "AllEnemy" }
+      "Data": {
+        "_turns": 1,
+        "_target": "AllEnemy"
+      }
     }
   ]
 }

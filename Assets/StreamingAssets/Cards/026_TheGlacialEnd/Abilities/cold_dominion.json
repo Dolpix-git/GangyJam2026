@@ -4,11 +4,11 @@
   "Steps": [
     {
       "Type": "ApplyDamageAmpAction",
-      "Data": { "_stacks": 4, "_target": "AllFriendly" }
+      "Data": { "_multiplier": 2, "_target": "AllFriendly", "_turns": 2}
     },
     {
       "Type": "ApplyShieldAction",
-      "Data": { "_amount": 3, "_target": "AllFriendly" }
+      "Data": { "_absorb": 3, "_target": "AllFriendly" }
     }
   ]
 }

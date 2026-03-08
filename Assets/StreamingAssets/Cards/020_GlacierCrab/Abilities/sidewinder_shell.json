@@ -8,7 +8,7 @@
     },
     {
       "Type": "ApplyShieldAction",
-      "Data": { "_amount": 4, "_target": "Self" }
+      "Data": { "_absorb": 4, "_target": "Self" }
     }
   ]
 }

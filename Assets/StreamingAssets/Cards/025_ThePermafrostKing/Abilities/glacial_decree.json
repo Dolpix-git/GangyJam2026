@@ -4,15 +4,24 @@
   "Steps": [
     {
       "Type": "ShiftBoardAction",
-      "Data": { "_target": "EnemyLeft" }
+      "Data": {
+        "_target": "EnemyLeft"
+      }
     },
     {
       "Type": "ApplyFrostAction",
-      "Data": { "_stacks": 4, "_target": "AllEnemy" }
+      "Data": {
+        "_damagePerTurn": 4,
+        "_target": "EnemyOpposing",
+        "_turns": 1
+      }
     },
     {
       "Type": "DamageAction",
-      "Data": { "_damage": 2, "_target": "AllEnemy" }
+      "Data": {
+        "_damage": 2,
+        "_target": "AllEnemy"
+      }
     }
   ]
 }

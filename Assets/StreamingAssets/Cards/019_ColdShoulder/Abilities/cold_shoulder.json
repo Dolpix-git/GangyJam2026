@@ -4,11 +4,18 @@
   "Steps": [
     {
       "Type": "HealAction",
-      "Data": { "_amount": 3, "_target": "Self" }
+      "Data": {
+        "_amount": 3,
+        "_target": "Self"
+      }
     },
     {
       "Type": "ApplyFrostAction",
-      "Data": { "_stacks": 2, "_target": "EnemyOpposing" }
+      "Data": {
+        "_damagePerTurn": 2,
+        "_target": "EnemyOpposing",
+        "_turns": 2
+      }
     }
   ]
 }
