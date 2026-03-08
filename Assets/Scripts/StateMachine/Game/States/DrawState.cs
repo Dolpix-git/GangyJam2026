@@ -1,4 +1,5 @@
 using CardGame.Data;
+using CardGame.Patterns;
 using CardGame.Player;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace CardGame.StateMachine.Game.States
         {
             _timer = 0f;
             Debug.Log("[Draw] === DRAW PHASE ===");
+            GameStateSingleton.Instance.SetCurrentState(this);
 
             foreach (var playerObj in ctx.Players)
             {
@@ -48,6 +50,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnExit(GameStateData ctx)
         {
             Debug.Log("[Draw] Draw phase complete.");
+            GameStateSingleton.Instance.SetCurrentState(null);
         }
     }
 }
