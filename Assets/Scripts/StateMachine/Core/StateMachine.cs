@@ -27,12 +27,18 @@ namespace CardGame.StateMachine
             if (newState == null)
             {
                 Debug.LogError("Attempted to change to a null state!");
+                EndState(null);
                 return;
             }
 
             currentState?.OnExit(context);
             currentState = newState;
             currentState.OnEnter(context);
+        }
+
+        public void EndState(IState<TContext> newState)
+        {
+            currentState?.OnExit(context);
         }
 
         /// <summary>
