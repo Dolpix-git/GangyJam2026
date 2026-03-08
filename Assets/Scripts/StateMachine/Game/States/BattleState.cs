@@ -25,6 +25,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnExit(GameStateData ctx)
         {
             Debug.Log("[Battle] Battle phase complete.");
+            ResetSelectedAbilities(ctx);
         }
 
         private IEnumerator RunBattle(GameStateData ctx)
@@ -83,6 +84,32 @@ namespace CardGame.StateMachine.Game.States
 
             Debug.Log("[Battle] All abilities resolved.");
             ctx.GoToState(new DrawState());
+        }
+
+        private static void ResetSelectedAbilities(GameStateData ctx)
+        {
+            for (var p = 0; p < ctx.Players.Count; p++)
+            {
+                var board = ctx.Players[p].GetComponent<PlayerBoard>();
+
+                for (var s = 0; s < PlayerBoard.BoardSize; s++)
+                {
+                    var card = board.GetSlot(s);
+                    if (card == null)
+                    {
+                        continue;
+                    }
+
+                    var cardMode = card.GetComponent<CardMode>();
+                    if (!cardMode)
+                    {
+                        Debug.LogError("Could not find CardMode");
+                        continue;
+                    }
+                    
+                    cardMode.Clear();
+                }
+            }
         }
 
         private static List<List<BattleEntry>> BuildSpeedGroups(GameStateData ctx)
