@@ -164,8 +164,9 @@ GameObject:
   - component: {fileID: 147187666}
   - component: {fileID: 147187668}
   - component: {fileID: 147187667}
+  - component: {fileID: 147187669}
   m_Layer: 5
-  m_Name: BoardSlot 3
+  m_Name: BoardSlot 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,6 +229,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147187665}
   m_CullTransparentMesh: 1
+--- !u!114 &147187669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147187665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548d27eeaab64cbdb086eabd2e216311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.UI.CardDrop.FieldCardDropSlot
+  _slotIndex: 2
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,8 +889,9 @@ GameObject:
   - component: {fileID: 556748337}
   - component: {fileID: 556748339}
   - component: {fileID: 556748338}
+  - component: {fileID: 556748340}
   m_Layer: 5
-  m_Name: BoardSlot 1
+  m_Name: BoardSlot 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -939,6 +954,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556748336}
   m_CullTransparentMesh: 1
+--- !u!114 &556748340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556748336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548d27eeaab64cbdb086eabd2e216311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.UI.CardDrop.FieldCardDropSlot
+  _slotIndex: 0
 --- !u!1001 &558709062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1795,8 +1823,9 @@ GameObject:
   - component: {fileID: 1543846564}
   - component: {fileID: 1543846566}
   - component: {fileID: 1543846565}
+  - component: {fileID: 1543846567}
   m_Layer: 5
-  m_Name: BoardSlot 2
+  m_Name: BoardSlot 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1859,6 +1888,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543846563}
   m_CullTransparentMesh: 1
+--- !u!114 &1543846567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543846563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548d27eeaab64cbdb086eabd2e216311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.UI.CardDrop.FieldCardDropSlot
+  _slotIndex: 1
 --- !u!1 &1621091471
 GameObject:
   m_ObjectHideFlags: 0

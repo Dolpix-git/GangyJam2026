@@ -1,7 +1,11 @@
 using System;
+using System.Linq;
 using CardGame.Card.Components;
 using CardGame.Data;
 using CardGame.StateMachine.Game;
+using CardGame.UI.CardDrop;
+using Events;
+using UI.ModelView.Models;
 using UnityEngine;
 
 namespace CardGame.Player.Controllers
@@ -28,6 +32,52 @@ namespace CardGame.Player.Controllers
             LogHand(hand);
             Debug.Log(mustPlay ? "  1/2/3 to select." : "  1/2/3 to select, P to pass.");
 
+            void BeginDrag(CardBeginDragEvent evt)
+            {
+                var cardUiObj = evt.DragHandler.GetComponent<ModelViewCard>();
+                var cardModel = cardUiObj.Model;
+                selectedHandIndex = hand.Cards.ToList().IndexOf(cardModel);
+            }
+            
+            void ReactToPlay(CardDropOnSlotEvent evt)
+            {
+                if (selectedHandIndex == -1)
+                {
+                    Debug.Log("[Play] No card selected.");
+                    return;
+                }
+
+                if (evt.DropSlot is not FieldCardDropSlot fieldSlot)
+                {
+                    Debug.LogError("This is not a field drop slot.");
+                    selectedHandIndex = -1;
+                    return;
+                }
+
+                int slotIndex = fieldSlot.SlotIndex;
+
+                if (board.GetSlot(slotIndex) != null)
+                {
+                    Debug.Log($"[Play] Slot {slotIndex + 1} occupied.");
+                    selectedHandIndex = -1;
+                    return;
+                }
+
+                var card = hand.RemoveAt(selectedHandIndex);
+                board.TryPlaceCard(card, slotIndex);
+                card.GetComponent<CardDeathSystem>().Initialize(playerObj);
+
+                Debug.Log(
+                    $"[Play] Player {playerIndex + 1} placed '{card.GetComponent<CardIdentity>()?.CardName}' in slot {slotIndex + 1}.");
+
+                EventBus.Unsubscribe<CardDropOnSlotEvent>(ReactToPlay);
+                EventBus.Unsubscribe<CardBeginDragEvent>(BeginDrag);
+                Finish(onDone);
+            }
+            
+            EventBus.Subscribe<CardDropOnSlotEvent>(ReactToPlay);
+            EventBus.Subscribe<CardBeginDragEvent>(BeginDrag);
+            
             _updateAction = () =>
             {
                 if (selectedHandIndex == -1)
