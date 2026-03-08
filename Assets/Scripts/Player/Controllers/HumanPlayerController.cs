@@ -300,7 +300,7 @@ namespace CardGame.Player.Controllers
                         continue;
                     }
 
-                    card.GetComponent<CardMode>().SelectedAbilityIndex = i;
+                    card.GetComponent<CardMode>().SelectAbility(i);
                     Debug.Log($"[Mode] Ability {i} selected. Press ENTER to confirm.");
                     return;
                 }

@@ -83,7 +83,7 @@ namespace CardGame.Player.Controllers
                 }
 
                 var abilityIndex = Random.Range(0, abilities.Abilities.Count);
-                card.GetComponent<CardMode>().SelectedAbilityIndex = abilityIndex;
+                card.GetComponent<CardMode>().SelectAbility(abilityIndex);
 
                 var id = card.GetComponent<CardIdentity>();
                 Debug.Log(
