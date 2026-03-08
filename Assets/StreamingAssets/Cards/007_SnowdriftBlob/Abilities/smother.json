@@ -1,0 +1,13 @@
+{
+  "Name": "Smother",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 3,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

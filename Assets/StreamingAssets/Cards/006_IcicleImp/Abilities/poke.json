@@ -1,0 +1,13 @@
+{
+  "Name": "Poke",
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 2,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

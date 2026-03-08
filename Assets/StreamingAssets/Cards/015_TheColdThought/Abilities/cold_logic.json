@@ -1,0 +1,14 @@
+{
+  "Name": "Cold Logic",
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "ApplyDamageAmpAction",
+      "Data": {
+        "_target": "Self",
+        "_multiplier": 1.5,
+        "_turns": 2
+      }
+    }
+  ]
+}

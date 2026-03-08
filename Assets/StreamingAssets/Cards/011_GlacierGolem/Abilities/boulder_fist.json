@@ -1,0 +1,13 @@
+{
+  "Name": "Boulder Fist",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 6,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "CardId": "009_BrainFreeze",
+  "CardName": "Brain Freeze",
+  "Description": "A floating brain made of ice. Thinks very slow, very cold thoughts. Hates slushies.",
+  "MaxHealth": 12,
+  "Speed": 4,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Tags": []
+}

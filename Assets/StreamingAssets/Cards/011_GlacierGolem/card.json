@@ -1,0 +1,10 @@
+{
+  "CardId": "011_GlacierGolem",
+  "CardName": "Glacier Golem",
+  "Description": "A slow, ancient construct of pure glacial ice. It has been walking toward something for 10,000 years.",
+  "MaxHealth": 26,
+  "Speed": 2,
+  "StruggleDamage": 3,
+  "Rarity": "Uncommon",
+  "Tags": []
+}

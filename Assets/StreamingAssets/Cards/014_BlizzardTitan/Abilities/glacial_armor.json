@@ -1,0 +1,13 @@
+{
+  "Name": "Glacial Armor",
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "ApplyShieldAction",
+      "Data": {
+        "_target": "Self",
+        "_absorb": 8
+      }
+    }
+  ]
+}

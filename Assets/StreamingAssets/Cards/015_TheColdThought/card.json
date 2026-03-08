@@ -1,0 +1,10 @@
+{
+  "CardId": "015_TheColdThought",
+  "CardName": "The Cold Thought",
+  "Description": "An idea so cold it became physical. It has never had a warm thought. It never will.",
+  "MaxHealth": 18,
+  "Speed": 4,
+  "StruggleDamage": 2,
+  "Rarity": "Epic",
+  "Tags": []
+}

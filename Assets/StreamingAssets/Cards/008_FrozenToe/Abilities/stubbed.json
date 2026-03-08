@@ -1,0 +1,13 @@
+{
+  "Name": "Stubbed",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 1,
+        "_target": "AllEnemy"
+      }
+    }
+  ]
+}

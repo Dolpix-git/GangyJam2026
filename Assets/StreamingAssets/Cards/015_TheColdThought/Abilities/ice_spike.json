@@ -1,0 +1,13 @@
+{
+  "Name": "Ice Spike",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 5,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

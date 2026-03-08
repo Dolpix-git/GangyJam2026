@@ -1,0 +1,10 @@
+{
+  "CardId": "007_SnowdriftBlob",
+  "CardName": "Snowdrift Blob",
+  "Description": "A sentient snowdrift. No one knows how it moves. No one dares ask.",
+  "MaxHealth": 18,
+  "Speed": 1,
+  "StruggleDamage": 2,
+  "Rarity": "Common",
+  "Tags": []
+}

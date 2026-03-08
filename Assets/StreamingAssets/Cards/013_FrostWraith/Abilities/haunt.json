@@ -1,0 +1,13 @@
+{
+  "Name": "Haunt",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ApplyParalysisAction",
+      "Data": {
+        "_target": "EnemyOpposing",
+        "_turns": 1
+      }
+    }
+  ]
+}

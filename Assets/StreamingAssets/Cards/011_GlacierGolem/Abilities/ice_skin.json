@@ -1,0 +1,13 @@
+{
+  "Name": "Ice Skin",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ApplyShieldAction",
+      "Data": {
+        "_target": "Self",
+        "_absorb": 5
+      }
+    }
+  ]
+}

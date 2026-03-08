@@ -1,0 +1,13 @@
+{
+  "Name": "Zero Point",
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "ApplyParalysisAction",
+      "Data": {
+        "_target": "AllEnemy",
+        "_turns": 1
+      }
+    }
+  ]
+}

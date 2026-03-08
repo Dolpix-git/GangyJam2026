@@ -1,0 +1,10 @@
+{
+  "CardId": "008_FrozenToe",
+  "CardName": "Frozen Toe",
+  "Description": "Just a toe. Frozen solid. It is inexplicably angry about this.",
+  "MaxHealth": 8,
+  "Speed": 6,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Tags": []
+}

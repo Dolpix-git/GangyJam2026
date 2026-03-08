@@ -1,0 +1,14 @@
+{
+  "Name": "Heat Death",
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "ApplyDamageAmpAction",
+      "Data": {
+        "_target": "Self",
+        "_multiplier": 2.0,
+        "_turns": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "Name": "Avalanche",
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 6,
+        "_target": "AllEnemy"
+      }
+    }
+  ]
+}

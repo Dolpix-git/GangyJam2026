@@ -1,0 +1,10 @@
+{
+  "CardId": "005_Slushpup",
+  "CardName": "Slushpup",
+  "Description": "A dog made entirely of slush. Enthusiastic. Leaves puddles everywhere it goes.",
+  "MaxHealth": 14,
+  "Speed": 3,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Tags": []
+}

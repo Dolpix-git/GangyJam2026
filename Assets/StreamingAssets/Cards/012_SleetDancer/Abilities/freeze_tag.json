@@ -1,0 +1,14 @@
+{
+  "Name": "Freeze Tag",
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "ApplyFrostAction",
+      "Data": {
+        "_target": "EnemyOpposing",
+        "_damagePerTurn": 1,
+        "_turns": 1
+      }
+    }
+  ]
+}

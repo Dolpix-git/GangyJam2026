@@ -1,0 +1,10 @@
+{
+  "CardId": "014_BlizzardTitan",
+  "CardName": "Blizzard Titan",
+  "Description": "An enormous being of compacted snow and rage. Moves once. Enough.",
+  "MaxHealth": 30,
+  "Speed": 1,
+  "StruggleDamage": 4,
+  "Rarity": "Rare",
+  "Tags": []
+}

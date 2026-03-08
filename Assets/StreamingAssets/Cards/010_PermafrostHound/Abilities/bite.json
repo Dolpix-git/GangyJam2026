@@ -1,0 +1,13 @@
+{
+  "Name": "Bite",
+  "MaxPP": 4,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 4,
+        "_target": "EnemyOpposing"
+      }
+    }
+  ]
+}

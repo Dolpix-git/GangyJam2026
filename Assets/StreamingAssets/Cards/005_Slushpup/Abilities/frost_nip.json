@@ -1,0 +1,14 @@
+{
+  "Name": "Frost Nip",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ApplyFrostAction",
+      "Data": {
+        "_target": "EnemyOpposing",
+        "_damagePerTurn": 1,
+        "_turns": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "Name": "Ice Step",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ShiftBoardAction",
+      "Data": {
+        "_target": "EnemyLeft"
+      }
+    }
+  ]
+}

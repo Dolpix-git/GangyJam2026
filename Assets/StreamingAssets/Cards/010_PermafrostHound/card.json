@@ -1,0 +1,10 @@
+{
+  "CardId": "010_PermafrostHound",
+  "CardName": "Permafrost Hound",
+  "Description": "A larger, angrier version of the Slushpup. Its bite lingers long after it lets go.",
+  "MaxHealth": 20,
+  "Speed": 4,
+  "StruggleDamage": 2,
+  "Rarity": "Uncommon",
+  "Tags": []
+}

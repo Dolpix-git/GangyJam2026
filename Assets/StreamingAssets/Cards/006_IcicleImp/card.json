@@ -1,0 +1,10 @@
+{
+  "CardId": "006_IcicleImp",
+  "CardName": "Icicle Imp",
+  "Description": "A tiny gremlin with fingers made of icicles. Pokes things compulsively. Cries when it melts.",
+  "MaxHealth": 10,
+  "Speed": 5,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Tags": []
+}

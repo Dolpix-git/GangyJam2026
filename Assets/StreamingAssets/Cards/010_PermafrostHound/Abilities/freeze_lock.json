@@ -1,0 +1,14 @@
+{
+  "Name": "Freeze Lock",
+  "MaxPP": 3,
+  "Steps": [
+    {
+      "Type": "ApplyFrostAction",
+      "Data": {
+        "_target": "EnemyOpposing",
+        "_damagePerTurn": 2,
+        "_turns": 2
+      }
+    }
+  ]
+}

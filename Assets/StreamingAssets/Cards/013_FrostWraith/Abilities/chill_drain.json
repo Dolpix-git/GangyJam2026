@@ -1,0 +1,21 @@
+{
+  "Name": "Chill Drain",
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "DamageAction",
+      "Data": {
+        "_damage": 3,
+        "_target": "EnemyOpposing"
+      }
+    },
+    {
+      "Type": "ApplyFrostAction",
+      "Data": {
+        "_target": "EnemyOpposing",
+        "_damagePerTurn": 1,
+        "_turns": 2
+      }
+    }
+  ]
+}

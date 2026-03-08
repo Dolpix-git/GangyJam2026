@@ -1,0 +1,10 @@
+{
+  "CardId": "012_SleetDancer",
+  "CardName": "Sleet Dancer",
+  "Description": "Spins through the battlefield in a spiral of sleet and bad intentions. Untouchable. Insufferable.",
+  "MaxHealth": 14,
+  "Speed": 6,
+  "StruggleDamage": 1,
+  "Rarity": "Uncommon",
+  "Tags": []
+}

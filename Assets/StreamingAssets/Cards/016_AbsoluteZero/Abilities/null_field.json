@@ -1,0 +1,13 @@
+{
+  "Name": "Null Field",
+  "MaxPP": 1,
+  "Steps": [
+    {
+      "Type": "ApplyShieldAction",
+      "Data": {
+        "_target": "AllFriendly",
+        "_absorb": 6
+      }
+    }
+  ]
+}

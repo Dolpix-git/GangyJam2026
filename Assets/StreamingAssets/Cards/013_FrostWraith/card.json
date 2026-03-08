@@ -1,0 +1,10 @@
+{
+  "CardId": "013_FrostWraith",
+  "CardName": "Frost Wraith",
+  "Description": "The ghost of something that died cold. It doesn't remember what it was. It remembers the cold.",
+  "MaxHealth": 16,
+  "Speed": 5,
+  "StruggleDamage": 2,
+  "Rarity": "Rare",
+  "Tags": []
+}

@@ -1,0 +1,14 @@
+{
+  "Name": "Deep Freeze",
+  "MaxPP": 2,
+  "Steps": [
+    {
+      "Type": "ApplyFrostAction",
+      "Data": {
+        "_target": "AllEnemy",
+        "_damagePerTurn": 3,
+        "_turns": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "CardId": "016_AbsoluteZero",
+  "CardName": "Absolute Zero",
+  "Description": "The physical embodiment of -273.15. Nothing moves in its presence. Nothing ever will again.",
+  "MaxHealth": 24,
+  "Speed": 3,
+  "StruggleDamage": 3,
+  "Rarity": "Legendary",
+  "Tags": []
+}
