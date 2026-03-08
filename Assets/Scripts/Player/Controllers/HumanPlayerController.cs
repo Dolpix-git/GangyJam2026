@@ -78,6 +78,12 @@ namespace CardGame.Player.Controllers
 
                 Debug.Log(
                     $"[Play] Player {playerIndex + 1} placed '{card.GetComponent<CardIdentity>()?.CardName}' in slot {slotIndex + 1}.");
+                
+                if (hand.Count == 0)
+                {
+                    Debug.Log($"[Play] Player {playerIndex + 1} has no cards in hand — auto-passing.");
+                    TryProgress(null);
+                }
             }
             
             void TryProgress(ProgressButtonClickedEvent evt)
@@ -98,7 +104,7 @@ namespace CardGame.Player.Controllers
             EventBus.Subscribe<CardBeginDragEvent>(BeginDrag);
             EventBus.Subscribe<ProgressButtonClickedEvent>(TryProgress);
 
-            _updateAction = () =>
+            /*_updateAction = () =>
             {
                 if (selectedHandIndex == -1)
                 {
@@ -163,7 +169,7 @@ namespace CardGame.Player.Controllers
                         return;
                     }
                 }
-            };
+            };*/
         }
 
         public void DoRetreatPhase(GameStateData ctx, int playerIndex, Action onDone)
@@ -174,6 +180,13 @@ namespace CardGame.Player.Controllers
             var selectedCardBoardIndex = -1;
             
             LogRetreatPrompt(playerIndex, board);
+            
+            if (CardCount(board) == 1)
+            {
+                Debug.Log("[Retreat] Need at least one card. Autopassing");
+                Finish(onDone);
+                return;
+            }
 
             void BeginDrag(CardBeginDragEvent evt)
             {
@@ -215,6 +228,13 @@ namespace CardGame.Player.Controllers
                 Debug.Log(
                     $"[Retreat] Player {playerIndex + 1} retreated '{card.GetComponent<CardIdentity>()?.CardName}' from slot {selectedCardBoardIndex + 1}.");
                 LogRetreatPrompt(playerIndex, board);
+                
+                if (CardCount(board) == 1)
+                {
+                    Debug.Log("[Retreat] Need at least one card. Autopassing");
+                    TryProgress(null);
+                    return;
+                }
             }
             
             void TryProgress(ProgressButtonClickedEvent evt)
@@ -229,7 +249,7 @@ namespace CardGame.Player.Controllers
             EventBus.Subscribe<CardBeginDragEvent>(BeginDrag);
             EventBus.Subscribe<ProgressButtonClickedEvent>(TryProgress);
 
-            _updateAction = () =>
+            /*_updateAction = () =>
             {
                 for (var i = 0; i < PlayerBoard.BoardSize; i++)
                 {
@@ -263,7 +283,7 @@ namespace CardGame.Player.Controllers
                 {
                     Finish(onDone);
                 }
-            };
+            };*/
         }
 
         public void DoModePhase(GameStateData ctx, int playerIndex, Action onDone)
