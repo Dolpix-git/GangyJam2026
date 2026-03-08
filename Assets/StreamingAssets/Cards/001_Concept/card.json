@@ -1,9 +1,10 @@
 {
-    "CardId": "001_Concept",
-    "CardName": "001_Concept",
-    "Description": "DevCard",
-    "MaxHealth": 22,
-    "Speed": 2,
-    "StruggleDamage": 1,
-    "Tags": []
+  "CardId": "001_Concept",
+  "CardName": "001_Concept",
+  "Description": "DevCard",
+  "MaxHealth": 22,
+  "Speed": 2,
+  "StruggleDamage": 1,
+  "Rarity": "Common",
+  "Tags": []
 }

@@ -45,6 +45,7 @@ namespace CardGame.Card
             card.GetComponent<HealthData>().Initialize(cardJson.MaxHealth);
             card.GetComponent<SpeedData>().Initialize(cardJson.Speed);
             card.GetComponent<StruggleData>().Initialize(cardJson.StruggleDamage);
+            card.GetComponent<RarityData>().Initialize(cardJson.Rarity);
             card.GetComponent<TagData>().Initialize(cardJson.Tags);
             card.GetComponent<AbilityData>().Initialize(LoadAbilities(cardDir));
 

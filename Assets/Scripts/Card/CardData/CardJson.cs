@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CardGame.Buffs;
+using CardGame.Data;
 
 namespace CardGame.Card.CardData
 {
@@ -12,6 +13,7 @@ namespace CardGame.Card.CardData
         public int MaxHealth;
         public int Speed;
         public int StruggleDamage;
+        public CardRarity Rarity;
         public List<CardTag> Tags = new();
     }
 }
