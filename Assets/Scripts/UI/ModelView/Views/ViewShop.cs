@@ -22,6 +22,11 @@ namespace UI.ModelView.Views
             {
                 _purchaseController.OnSelectionChanged += OnSelectionChanged;
             }
+
+            if (Model != null)
+            {
+                Refresh();
+            }
         }
 
         protected override void OnDisable()
@@ -47,6 +52,7 @@ namespace UI.ModelView.Views
             }
 
             model.OnPopulated += Refresh;
+            Refresh();
         }
 
         private void Refresh()
