@@ -6,7 +6,8 @@ namespace CardGame.StateMachine.Explore.States
     {
         public void OnEnter(ExploreStateData ctx)
         {
-            Debug.Log("[Explore] Buy Phase (placeholder)");
+            Debug.Log("[Explore] Buy Phase");
+            ctx.Shop.Populate();
         }
 
         public void OnUpdate(ExploreStateData ctx)
