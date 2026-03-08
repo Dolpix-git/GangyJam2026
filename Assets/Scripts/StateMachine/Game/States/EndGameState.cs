@@ -1,5 +1,7 @@
 using CardGame.Player;
+using CardGame.Run;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CardGame.StateMachine.Game.States
 {
@@ -18,9 +20,19 @@ namespace CardGame.StateMachine.Game.States
             var winnerIndex = _losingPlayerIndex == 0 ? 1 : 0;
             var winner = ctx.Players[winnerIndex].GetComponent<PlayerData>();
 
-            Debug.Log("[EndGame] === GAME OVER ===");
-            Debug.Log($"[EndGame] {loser.PlayerName} cannot play a card and has lost!");
-            Debug.Log($"[EndGame] {winner.PlayerName} wins!");
+            Debug.Log("[EndGame] GAME OVER");
+            Debug.Log($"[EndGame] {loser.PlayerName} has lost! {winner.PlayerName} wins!");
+
+            if (winnerIndex == 0)
+            {
+                RunContext.Instance.Save();
+                SceneManager.LoadScene(SceneNames.Explore);
+            }
+            else
+            {
+                SaveSystem.DeleteSave();
+                SceneManager.LoadScene(SceneNames.MainMenu);
+            }
         }
 
         public void OnUpdate(GameStateData ctx)
