@@ -5,6 +5,6 @@
   "MaxHealth": 10,
   "Speed": 6,
   "StruggleDamage": 1,
-  "Rarity": "Common",
+  "Rarity": "Legendary",
   "Tags": ["ImmuneFrost"]
 }
