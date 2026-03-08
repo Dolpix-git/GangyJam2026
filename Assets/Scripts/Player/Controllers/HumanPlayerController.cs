@@ -25,6 +25,14 @@ namespace CardGame.Player.Controllers
             var playerObj = ctx.Players[playerIndex];
             var hand = playerObj.GetComponent<PlayerHand>();
             var board = playerObj.GetComponent<PlayerBoard>();
+
+            if (hand.Count == 0)
+            {
+                Debug.Log($"[Play] Player {playerIndex + 1} has no cards in hand — auto-passing.");
+                onDone();
+                return;
+            }
+
             var mustPlay = IsBoardEmpty(board);
             var selectedHandIndex = -1;
 
