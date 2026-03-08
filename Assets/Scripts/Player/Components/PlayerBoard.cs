@@ -10,7 +10,7 @@ namespace CardGame.Player
 
         public event Action<GameObject, int> OnCardAdded;
         public event Action<int> OnCardRemoved;
-        
+
         public bool IsFull
         {
             get
@@ -24,6 +24,22 @@ namespace CardGame.Player
                 }
 
                 return true;
+            }
+        }
+
+        public bool HasCards
+        {
+            get
+            {
+                for (var i = 0; i < BoardSize; i++)
+                {
+                    if (_slots[i] != null)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
             }
         }
 

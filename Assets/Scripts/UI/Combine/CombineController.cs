@@ -61,6 +61,13 @@ namespace CardGame.UI.Combine
             OnSelectionChanged?.Invoke();
         }
 
+        public void GoToBattle()
+        {
+            _selected.Clear();
+            OnSelectionChanged?.Invoke();
+            _stateData.GoToState(new ExploreSetupEnemyState());
+        }
+
         public void Combine()
         {
             if (!CanCombine)

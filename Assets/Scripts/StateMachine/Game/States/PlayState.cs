@@ -30,7 +30,7 @@ namespace CardGame.StateMachine.Game.States
             var board = playerObj.GetComponent<PlayerBoard>();
             var hand = playerObj.GetComponent<PlayerHand>();
 
-            if (!board.IsFull && hand.Count == 0)
+            if (!board.HasCards && hand.Count == 0)
             {
                 ctx.GoToState(new EndGameState(playerIndex));
                 return;

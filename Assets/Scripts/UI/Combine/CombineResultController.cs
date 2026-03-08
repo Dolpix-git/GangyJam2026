@@ -27,7 +27,7 @@ namespace CardGame.UI.Combine
         [SerializeField] private float _mergeDistance = 10f;
 
         [Header("UI")]
-        [SerializeField] private GameObject _goToBattleButton;
+        [SerializeField] private GameObject _continueButton;
 
         private GameObject _dataA;
         private GameObject _dataB;
@@ -39,7 +39,7 @@ namespace CardGame.UI.Combine
 
         public void Show(GameObject parentA, GameObject parentB, string combinedId)
         {
-            _goToBattleButton.SetActive(false);
+            _continueButton.SetActive(false);
 
             _dataA = parentA;
             _dataB = parentB;
@@ -55,10 +55,10 @@ namespace CardGame.UI.Combine
             StartCoroutine(RunMergeSequence());
         }
 
-        public void GoToBattle()
+        public void CombineAgain()
         {
             Cleanup();
-            _stateData.GoToState(new ExploreSetupEnemyState());
+            _stateData.GoToState(new ExploreCombineState());
         }
 
         private ModelViewCard SpawnCardUI(GameObject dataCard, RectTransform anchor)
@@ -96,7 +96,7 @@ namespace CardGame.UI.Combine
             _dataResult.SetActive(false);
             _uiResult = SpawnCardUI(_dataResult, _anchorCentre);
 
-            _goToBattleButton.SetActive(true);
+            _continueButton.SetActive(true);
         }
 
         private void Cleanup()
