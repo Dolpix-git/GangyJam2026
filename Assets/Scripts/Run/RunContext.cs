@@ -7,6 +7,9 @@ namespace CardGame.Run
     {
         public const int StartingCoins = 10;
         public const int CoinsPerWin = 5;
+        public const int MaxDeckSize = 7;
+
+        public bool IsDeckFull => PlayerCardIds.Count >= MaxDeckSize;
 
         public List<string> PlayerCardIds { get; private set; } = new();
         public List<string> EnemyCardIds { get; private set; } = new();

@@ -52,6 +52,12 @@ namespace CardGame.UI.Shop
             SelectCard(evt.BoughtCard);
         }
 
+        public bool CanAddToSelection()
+        {
+            var deckAfter = RunContext.Instance.PlayerCardIds.Count + _selected.Count;
+            return deckAfter < RunContext.MaxDeckSize;
+        }
+
         public void SelectCard(GameObject card)
         {
             if (_selected.Contains(card))
@@ -61,6 +67,12 @@ namespace CardGame.UI.Shop
             }
             else
             {
+                if (!CanAddToSelection())
+                {
+                    Debug.Log($"[Shop] Deck full ({RunContext.MaxDeckSize} cards max).");
+                    return;
+                }
+
                 _selected.Add(card);
                 Debug.Log($"[Shop] Selected '{card.name}'.");
             }
@@ -84,6 +96,12 @@ namespace CardGame.UI.Shop
 
             foreach (var card in _selected)
             {
+                if (RunContext.Instance.IsDeckFull)
+                {
+                    Debug.Log($"[Shop] Deck full — skipping remaining cards.");
+                    break;
+                }
+
                 var identity = card.GetComponent<CardIdentity>();
                 var cost = card.GetComponent<CostData>();
                 var cardId = identity != null ? identity.CardId : card.name;
