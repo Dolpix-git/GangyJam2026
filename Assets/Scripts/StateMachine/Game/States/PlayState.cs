@@ -1,3 +1,4 @@
+using CardGame.Patterns;
 using CardGame.Player;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnEnter(GameStateData ctx)
         {
             Debug.Log("[Play] Enter Play Phase.");
+            GameStateSingleton.Instance.SetCurrentState(this);
             _done[0] = false;
             _done[1] = false;
             AdvanceToPlayer(ctx, 0);
@@ -22,6 +24,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnExit(GameStateData ctx)
         {
             Debug.Log("[Play] Play phase complete.");
+            GameStateSingleton.Instance.SetCurrentState(null);
         }
 
         private void AdvanceToPlayer(GameStateData ctx, int playerIndex)

@@ -1,3 +1,4 @@
+using CardGame.Patterns;
 using CardGame.Player;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnEnter(GameStateData ctx)
         {
             Debug.Log("[Retreat] Enter Retreat Phase");
+            GameStateSingleton.Instance.SetCurrentState(this);
             _activePlayer = 0;
             AdvanceToNextEligiblePlayer(ctx);
         }
@@ -21,6 +23,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnExit(GameStateData ctx)
         {
             Debug.Log("[Retreat] Retreat phase complete.");
+            GameStateSingleton.Instance.SetCurrentState(null);
         }
 
         private void AdvanceToNextEligiblePlayer(GameStateData ctx)

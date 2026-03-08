@@ -13,7 +13,7 @@ namespace CardGame.StateMachine.Game.States
         {
             Debug.Log("[Mode] Enter Mode Phase");
 
-            GameStateSingleton.Instance.CurrentState = this;
+            GameStateSingleton.Instance.SetCurrentState(this);
             
             _activePlayer = 0;
             ClearAllModes(ctx);
@@ -28,7 +28,7 @@ namespace CardGame.StateMachine.Game.States
         {
             Debug.Log("[Mode] Mode Selection Complete.");
             
-            GameStateSingleton.Instance.CurrentState = null;
+            GameStateSingleton.Instance.SetCurrentState(null);
         }
 
         private void AdvanceToNextPlayer(GameStateData ctx)

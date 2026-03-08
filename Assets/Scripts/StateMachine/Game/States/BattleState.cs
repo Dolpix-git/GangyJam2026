@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using CardGame.Abilities;
 using CardGame.Data;
+using CardGame.Patterns;
 using CardGame.Player;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnEnter(GameStateData ctx)
         {
             Debug.Log("[Battle] === BATTLE PHASE ===");
+            GameStateSingleton.Instance.SetCurrentState(this);
             _battleRunning = true;
             ctx.Runner.StartCoroutine(RunBattle(ctx));
         }
@@ -25,6 +27,7 @@ namespace CardGame.StateMachine.Game.States
         public void OnExit(GameStateData ctx)
         {
             Debug.Log("[Battle] Battle phase complete.");
+            GameStateSingleton.Instance.SetCurrentState(null);
             ResetSelectedAbilities(ctx);
         }
 

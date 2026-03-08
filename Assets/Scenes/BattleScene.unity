@@ -1798,6 +1798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87cd7cabf39e49d687c68c4c6f677597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardGame.UI.ProgressButton
+  _textbox: {fileID: 438349142}
+  _button: {fileID: 1074654715}
 --- !u!114 &1074654715
 MonoBehaviour:
   m_ObjectHideFlags: 0
