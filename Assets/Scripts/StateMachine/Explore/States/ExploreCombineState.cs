@@ -6,8 +6,9 @@ namespace CardGame.StateMachine.Explore.States
     {
         public void OnEnter(ExploreStateData ctx)
         {
-            Debug.Log("[Explore] Combine Phase (placeholder)");
+            Debug.Log("[Explore] Combine Phase");
             ctx.CombineCardsMenu.SetActive(true);
+            ctx.Combine?.Populate();
         }
 
         public void OnUpdate(ExploreStateData ctx)
