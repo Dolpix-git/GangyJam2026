@@ -9,12 +9,6 @@ using Random = UnityEngine.Random;
 
 namespace CardGame.StateMachine.Explore.States
 {
-    /// <summary>
-    /// Runs once at the very start of a fresh run (PlayerCardIds is empty).
-    /// Picks 3 random Common cards from StreamingAssets/Cards/ and adds them to the player's deck.
-    /// Immediately advances to ExploreBuyState — no UI, no waiting.
-    /// On a loaded run (cards already exist) it is a no-op and passes straight through.
-    /// </summary>
     public class ExploreStarterPackState : IState<ExploreStateData>
     {
         private const int StarterCount = 0;
@@ -30,9 +24,13 @@ namespace CardGame.StateMachine.Explore.States
             ctx.GoToState(new ExploreBuyState());
         }
 
-        public void OnUpdate(ExploreStateData ctx) { }
+        public void OnUpdate(ExploreStateData ctx)
+        {
+        }
 
-        public void OnExit(ExploreStateData ctx) { }
+        public void OnExit(ExploreStateData ctx)
+        {
+        }
 
         private static void GiveStarterCards(RunContext run)
         {
@@ -71,7 +69,10 @@ namespace CardGame.StateMachine.Explore.States
             foreach (var cardDir in Directory.GetDirectories(CardsRoot))
             {
                 var jsonPath = Path.Combine(cardDir, "card.json");
-                if (!File.Exists(jsonPath)) continue;
+                if (!File.Exists(jsonPath))
+                {
+                    continue;
+                }
 
                 var cardJson = JsonConvert.DeserializeObject<CardJson>(File.ReadAllText(jsonPath));
                 if (cardJson != null && cardJson.Rarity == CardRarity.Common)
