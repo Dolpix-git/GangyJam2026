@@ -1,6 +1,9 @@
 using System;
+using System.Linq;
 using CardGame.Abilities;
 using CardGame.Data;
+using CardGame.Patterns;
+using CardGame.StateMachine.Game.States;
 using CardGame.UI.ModelViewPattern;
 using UI.ModelView.Models;
 using UnityEngine;
@@ -15,16 +18,29 @@ namespace UI.ModelView.Views
         private CardMode _cardMode;
         private Ability _ability;
 
-        [SerializeField] private Button _button;
+        [SerializeField] private Outline _outline;
 
-        protected override void Awake()
+        public void OnClick()
         {
-            base.Awake();
-
-            if (_button == null)
+            if (!_cardMode || _ability == null)
             {
-                Debug.LogWarning($"{nameof(ViewAbilityButton)}: Button reference is missing.");
+                Debug.LogError("Missing Cardmode or ability");
+                return;
             }
+
+            var thisAbilityIndex = _abilityData.Abilities.ToList().IndexOf(_ability);
+            if (thisAbilityIndex == -1)
+            {
+                Debug.LogError("Ability does not exist in abilitydata");
+                return;
+            }
+
+            if (GameStateSingleton.Instance.CurrentState is not ModeState)
+            {
+                return;
+            }
+            
+            _cardMode.SelectAbility(thisAbilityIndex);
         }
 
         private void Start()
@@ -116,11 +132,7 @@ namespace UI.ModelView.Views
             }
 
             var thisAbilitySelected = selectedAbility == _ability;
-
-            var buttonColors = _button.colors;
-            buttonColors.normalColor = thisAbilitySelected ? Color.green : Color.white;
-
-            _button.colors = buttonColors;
+            _outline.enabled = thisAbilitySelected;
         }
 
         protected override void HandleModelChanged(Ability model)

@@ -1,4 +1,5 @@
 using CardGame.Data;
+using CardGame.Patterns;
 using CardGame.Player;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ namespace CardGame.StateMachine.Game.States
         public void OnEnter(GameStateData ctx)
         {
             Debug.Log("[Mode] Enter Mode Phase");
+
+            GameStateSingleton.Instance.CurrentState = this;
+            
             _activePlayer = 0;
             ClearAllModes(ctx);
             AdvanceToNextPlayer(ctx);
@@ -23,6 +27,8 @@ namespace CardGame.StateMachine.Game.States
         public void OnExit(GameStateData ctx)
         {
             Debug.Log("[Mode] Mode Selection Complete.");
+            
+            GameStateSingleton.Instance.CurrentState = null;
         }
 
         private void AdvanceToNextPlayer(GameStateData ctx)

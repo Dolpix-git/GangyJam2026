@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using CardGame.Card.Components;
 using CardGame.Data;
@@ -253,72 +254,38 @@ namespace CardGame.Player.Controllers
         public void DoModePhase(GameStateData ctx, int playerIndex, Action onDone)
         {
             var board = ctx.Players[playerIndex].GetComponent<PlayerBoard>();
-            var slot = 0;
 
-            void AdvanceSlot()
+            List<CardMode> cardModes = new List<CardMode>();
+
+            for (int i = 0; i < PlayerBoard.BoardSize; i++)
             {
-                while (slot < PlayerBoard.BoardSize)
-                {
-                    var card = board.GetSlot(slot);
-                    if (card == null)
-                    {
-                        slot++;
-                        continue;
-                    }
-
-                    var abilities = card.GetComponent<AbilityData>();
-                    if (abilities == null || abilities.Abilities.Count == 0)
-                    {
-                        Debug.Log(
-                            $"[Mode] '{card.GetComponent<CardIdentity>()?.CardName}' has no abilities — skipping.");
-                        slot++;
-                        continue;
-                    }
-
-                    Debug.Log(
-                        $"[Mode] Player {playerIndex + 1} — '{card.GetComponent<CardIdentity>()?.CardName}' (slot {slot + 1}). Pick ability:");
-                    for (var i = 0; i < abilities.Abilities.Count; i++)
-                    {
-                        Debug.Log($"  [{i + 1}] {abilities.Abilities[i].Name}");
-                    }
-
-                    Debug.Log("  ENTER to confirm.");
-                    return;
-                }
-
-                Finish(onDone);
-            }
-
-            AdvanceSlot();
-
-            _updateAction = () =>
-            {
-                var card = board.GetSlot(slot);
+                var card = board.GetSlot(i);
                 if (card == null)
                 {
-                    return;
+                    continue;
                 }
-
+                
                 var abilities = card.GetComponent<AbilityData>();
-
-                for (var i = 0; i < abilities.Abilities.Count; i++)
+                if (abilities == null || abilities.Abilities.Count == 0)
                 {
-                    if (!Input.GetKeyDown(KeyCode.Alpha1 + i))
-                    {
-                        continue;
-                    }
-
-                    card.GetComponent<CardMode>().SelectAbility(i);
-                    Debug.Log($"[Mode] Ability {i} selected. Press ENTER to confirm.");
-                    return;
+                    Debug.Log($"[Mode] '{card.GetComponent<CardIdentity>()?.CardName}' has no abilities — skipping.");
+                    continue;
                 }
 
-                if (Input.GetKeyDown(KeyCode.Return))
+                var cardMode = card.GetComponent<CardMode>();
+                cardModes.Add(cardMode);
+            }
+
+            EventBus.Subscribe<ProgressButtonClickedEvent>(TryProgress);
+
+            void TryProgress(ProgressButtonClickedEvent evt)
+            {
+                if (cardModes.All(mode => mode.HasSelection))
                 {
-                    slot++;
-                    AdvanceSlot();
+                    Finish(onDone);
+                    EventBus.Unsubscribe<ProgressButtonClickedEvent>(TryProgress);
                 }
-            };
+            }
         }
 
         private void Finish(Action onDone)

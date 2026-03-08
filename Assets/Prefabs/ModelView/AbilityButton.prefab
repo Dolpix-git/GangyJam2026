@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 1360511444019203474}
   - component: {fileID: 3840617251373610130}
   - component: {fileID: 447461914407553170}
+  - component: {fileID: 2295430183200601843}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -174,7 +175,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1360511444019203474}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 447461914407553170}
+        m_TargetAssemblyTypeName: UI.ModelView.Views.ViewAbilityButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &447461914407553170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +201,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI.ModelView.Views.ViewAbilityButton
   modelView: {fileID: 993923491976012100}
-  _button: {fileID: 3840617251373610130}
+  _outline: {fileID: 2295430183200601843}
+--- !u!114 &2295430183200601843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785728486425429269}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 1, b: 0.17415261, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1647405453103147500
 GameObject:
   m_ObjectHideFlags: 0
