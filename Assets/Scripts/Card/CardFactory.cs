@@ -19,7 +19,8 @@ namespace CardGame.Card
 
         [SerializeField] private GameObject _cardPrefab;
 
-        private static string CardsRoot => Path.Combine(Application.streamingAssetsPath, "Cards");
+        private static string CardsRoot    => Path.Combine(Application.streamingAssetsPath, "Cards");
+        private static string DevCardsRoot => Path.Combine(Application.streamingAssetsPath, "DevCards");
 
         public GameObject CreateCard(string cardName)
         {
@@ -27,8 +28,17 @@ namespace CardGame.Card
 
             if (!Directory.Exists(cardDir))
             {
-                Debug.LogError($"[CardFactory] No card folder found for '{cardName}' at {cardDir}");
-                return null;
+                var devCardDir = Path.Combine(DevCardsRoot, cardName);
+                if (Directory.Exists(devCardDir))
+                {
+                    Debug.LogWarning($"[CardFactory] '{cardName}' not found in Cards — falling back to DevCards.");
+                    cardDir = devCardDir;
+                }
+                else
+                {
+                    Debug.LogError($"[CardFactory] No card folder found for '{cardName}' in Cards or DevCards.");
+                    return null;
+                }
             }
 
             var cardJson = LoadJson<CardJson>(Path.Combine(cardDir, "card.json"));
@@ -83,13 +93,13 @@ namespace CardGame.Card
 
         private static T LoadJson<T>(string path) where T : class
         {
-            if (!File.Exists(path))
+            if (File.Exists(path))
             {
-                Debug.LogWarning($"[CardFactory] File not found: {path}");
-                return null;
+                return JsonConvert.DeserializeObject<T>(File.ReadAllText(path), _settings);
             }
 
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path), _settings);
+            Debug.LogWarning($"[CardFactory] File not found: {path}");
+            return null;
         }
     }
 }
