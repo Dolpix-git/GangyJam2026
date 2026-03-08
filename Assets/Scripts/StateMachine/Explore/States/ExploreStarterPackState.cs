@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using CardGame.Card.CardData;
 using CardGame.Data;
 using CardGame.Run;
@@ -18,7 +17,7 @@ namespace CardGame.StateMachine.Explore.States
     /// </summary>
     public class ExploreStarterPackState : IState<ExploreStateData>
     {
-        private const int StarterCount = 3;
+        private const int StarterCount = 0;
         private static string CardsRoot => Path.Combine(Application.streamingAssetsPath, "Cards");
 
         public void OnEnter(ExploreStateData ctx)

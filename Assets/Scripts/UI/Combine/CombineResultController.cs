@@ -58,7 +58,7 @@ namespace CardGame.UI.Combine
         public void GoToBattle()
         {
             Cleanup();
-            _stateData.GoToState(new ExploreFightState());
+            _stateData.GoToState(new ExploreSetupEnemyState());
         }
 
         private ModelViewCard SpawnCardUI(GameObject dataCard, RectTransform anchor)

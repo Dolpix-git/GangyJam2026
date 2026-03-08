@@ -7,5 +7,6 @@ namespace CardGame.Run
     public class RunSaveData
     {
         public List<string> PlayerCardIds = new();
+        public int RunCount;
     }
 }

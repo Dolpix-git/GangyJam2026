@@ -17,7 +17,7 @@ namespace CardGame.UI
         [ContextMenu("OnCombineDonePressed")]
         public void OnCombineDonePressed()
         {
-            _stateData.GoToState(new ExploreFightState());
+            _stateData.GoToState(new ExploreSetupEnemyState());
         }
     }
 }
