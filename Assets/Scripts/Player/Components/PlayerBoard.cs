@@ -27,6 +27,11 @@ namespace CardGame.Player
             }
         }
 
+        public int GetIndex(GameObject obj)
+        {
+            return Array.IndexOf(_slots, obj);
+        }
+
         public GameObject GetSlot(int index)
         {
             return _slots[index];

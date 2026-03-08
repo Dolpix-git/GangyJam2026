@@ -38,7 +38,7 @@ namespace CardGame.Player.Controllers
                 var cardModel = cardUiObj.Model;
                 selectedHandIndex = hand.Cards.ToList().IndexOf(cardModel);
             }
-            
+
             void ReactToPlay(CardDropOnSlotEvent evt)
             {
                 if (selectedHandIndex == -1)
@@ -74,10 +74,10 @@ namespace CardGame.Player.Controllers
                 EventBus.Unsubscribe<CardBeginDragEvent>(BeginDrag);
                 Finish(onDone);
             }
-            
+
             EventBus.Subscribe<CardDropOnSlotEvent>(ReactToPlay);
             EventBus.Subscribe<CardBeginDragEvent>(BeginDrag);
-            
+
             _updateAction = () =>
             {
                 if (selectedHandIndex == -1)
@@ -151,8 +151,59 @@ namespace CardGame.Player.Controllers
             var playerObj = ctx.Players[playerIndex];
             var board = playerObj.GetComponent<PlayerBoard>();
             var hand = playerObj.GetComponent<PlayerHand>();
+            var selectedCardBoardIndex = -1;
+
 
             LogRetreatPrompt(playerIndex, board);
+            
+            void BeginDrag(CardBeginDragEvent evt)
+            {
+                var cardUiObj = evt.DragHandler.GetComponent<ModelViewCard>();
+                var cardModel = cardUiObj.Model;
+                selectedCardBoardIndex = board.GetIndex(cardModel);
+            }
+            
+            void ReactToRetreat(CardDropOnSlotEvent evt)
+            {
+                if (CardCount(board) == 1)
+                {
+                    Debug.Log("[Retreat] Need at least one card.");
+                    return;
+                }
+                
+                if (selectedCardBoardIndex == -1)
+                {
+                    Debug.Log("[Play] No card selected.");
+                    return;
+                }
+
+                if (evt.DropSlot is not HandCardDropSlot handSlot)
+                {
+                    Debug.LogError("This is not a hand drop slot.");
+                    selectedCardBoardIndex = -1;
+                    return;
+                }
+
+                var card = board.GetSlot(selectedCardBoardIndex);
+                if (card == null)
+                {
+                    Debug.Log($"[Retreat] Slot {selectedCardBoardIndex + 1} empty.");
+                    return;
+                }
+
+                board.RemoveAt(selectedCardBoardIndex);
+                hand.AddCard(card);
+                Debug.Log(
+                    $"[Retreat] Player {playerIndex + 1} retreated '{card.GetComponent<CardIdentity>()?.CardName}' from slot {selectedCardBoardIndex + 1}.");
+                LogRetreatPrompt(playerIndex, board);
+                
+                EventBus.Unsubscribe<CardDropOnSlotEvent>(ReactToRetreat);
+                EventBus.Unsubscribe<CardBeginDragEvent>(BeginDrag);
+                Finish(onDone);
+            }
+            
+            EventBus.Subscribe<CardDropOnSlotEvent>(ReactToRetreat);
+            EventBus.Subscribe<CardBeginDragEvent>(BeginDrag);
 
             _updateAction = () =>
             {
