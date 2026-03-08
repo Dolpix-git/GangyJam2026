@@ -8,5 +8,6 @@ namespace CardGame.Run
     {
         public List<string> PlayerCardIds = new();
         public int RunCount;
+        public int Coins;
     }
 }

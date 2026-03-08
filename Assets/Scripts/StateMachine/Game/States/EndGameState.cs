@@ -25,6 +25,8 @@ namespace CardGame.StateMachine.Game.States
 
             if (winnerIndex == 0)
             {
+                RunContext.Instance.AwardWinCoins();
+                Debug.Log($"[EndGame] +{RunContext.CoinsPerWin} coins awarded. Total: {RunContext.Instance.Coins}");
                 RunContext.Instance.Save();
                 SceneManager.LoadScene(SceneNames.Explore);
             }

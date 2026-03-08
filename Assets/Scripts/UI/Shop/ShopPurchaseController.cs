@@ -13,15 +13,10 @@ namespace CardGame.UI.Shop
     {
         [SerializeField] private ShopComponent _shop;
         [SerializeField] private ExploreStateData _stateData;
-        [SerializeField] private int _requiredSelections = 2;
 
         private readonly List<GameObject> _selected = new();
 
-        public event Action OnSelectionChanged;
-
         public IReadOnlyList<GameObject> Selected => _selected;
-        public bool CanBuy => _selected.Count == _requiredSelections;
-        public bool IsSelected(GameObject card) => _selected.Contains(card);
 
         private void OnEnable()
         {
@@ -31,6 +26,25 @@ namespace CardGame.UI.Shop
         private void OnDisable()
         {
             EventBus.Unsubscribe<BuyCardEvent>(OnBuyCardEvent);
+        }
+
+        public event Action OnSelectionChanged;
+
+        public bool IsSelected(GameObject card)
+        {
+            return _selected.Contains(card);
+        }
+
+        public bool CanAffordSelected()
+        {
+            var total = 0;
+            foreach (var card in _selected)
+            {
+                var cost = card.GetComponent<CostData>();
+                total += cost != null ? cost.Cost : 0;
+            }
+
+            return RunContext.Instance.Coins >= total;
         }
 
         private void OnBuyCardEvent(BuyCardEvent evt)
@@ -43,18 +57,12 @@ namespace CardGame.UI.Shop
             if (_selected.Contains(card))
             {
                 _selected.Remove(card);
-                Debug.Log($"[Shop] Deselected '{card.name}'. ({_selected.Count}/{_requiredSelections})");
+                Debug.Log($"[Shop] Deselected '{card.name}'.");
             }
             else
             {
-                if (_selected.Count >= _requiredSelections)
-                {
-                    Debug.Log($"[Shop] Already have {_requiredSelections} selected — deselect one first.");
-                    return;
-                }
-
                 _selected.Add(card);
-                Debug.Log($"[Shop] Selected '{card.name}'. ({_selected.Count}/{_requiredSelections})");
+                Debug.Log($"[Shop] Selected '{card.name}'.");
             }
 
             OnSelectionChanged?.Invoke();
@@ -62,23 +70,38 @@ namespace CardGame.UI.Shop
 
         public void Buy()
         {
-            if (!CanBuy)
+            if (_selected.Count == 0)
             {
-                Debug.Log($"[Shop] Need {_requiredSelections} cards selected to buy.");
+                Debug.Log("[Shop] Nothing selected.");
+                return;
+            }
+
+            if (!CanAffordSelected())
+            {
+                Debug.Log($"[Shop] Not enough coins. Have {RunContext.Instance.Coins}.");
                 return;
             }
 
             foreach (var card in _selected)
             {
                 var identity = card.GetComponent<CardIdentity>();
+                var cost = card.GetComponent<CostData>();
                 var cardId = identity != null ? identity.CardId : card.name;
+                var price = cost != null ? cost.Cost : 0;
+
+                RunContext.Instance.TrySpendCoins(price);
                 RunContext.Instance.PlayerCardIds.Add(cardId);
                 _shop.RemoveCard(card);
-                Debug.Log($"[Shop] Bought '{cardId}'.");
+                Debug.Log($"[Shop] Bought '{cardId}' for {price} coins. Remaining: {RunContext.Instance.Coins}");
             }
 
             RunContext.Instance.Save();
+            _selected.Clear();
+            _stateData.GoToState(new ExploreCombineState());
+        }
 
+        public void Skip()
+        {
             _selected.Clear();
             _stateData.GoToState(new ExploreCombineState());
         }

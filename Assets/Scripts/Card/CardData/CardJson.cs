@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 using CardGame.Buffs;
 using CardGame.Data;
 
 namespace CardGame.Card.CardData
 {
-    [System.Serializable]
+    [Serializable]
     public class CardJson
     {
         public string CardId;
@@ -14,6 +15,7 @@ namespace CardGame.Card.CardData
         public int Speed;
         public int StruggleDamage;
         public CardRarity Rarity;
+        public int Cost;
         public List<CardTag> Tags = new();
     }
 }
