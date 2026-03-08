@@ -16,15 +16,15 @@ namespace CardGame.Run
 
         public void StartNewRun()
         {
-            PlayerCardIds = new List<string> { "001_Concept", "002_Concept", "003_Concept" };
-            EnemyCardIds = new List<string> { "001_Concept", "002_Concept", "003_Concept" };
+            PlayerCardIds = new List<string>();
+            EnemyCardIds = new List<string>();
             Save();
         }
 
         public void LoadRun(RunSaveData data)
         {
             PlayerCardIds = new List<string>(data.PlayerCardIds);
-            EnemyCardIds = new List<string> { "001_Concept", "002_Concept", "003_Concept" };
+            EnemyCardIds = new List<string>();
         }
 
         public void Save()

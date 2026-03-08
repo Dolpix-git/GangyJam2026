@@ -18,7 +18,7 @@ namespace CardGame.StateMachine.Explore
 
         private void Start()
         {
-            _stateMachine.ChangeState(new ExploreBuyState());
+            _stateMachine.ChangeState(new ExploreStarterPackState());
         }
 
         private void Update()
