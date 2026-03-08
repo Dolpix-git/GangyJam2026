@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 5218601841905186333}
   - component: {fileID: 571621775833697427}
   - component: {fileID: 1541735279636643560}
-  - component: {fileID: 1611911884443749141}
   m_Layer: 5
   m_Name: CardDisplay
   m_TagString: Untagged
@@ -139,23 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658186698b235b247a6da36fd800e969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardDragHandler
---- !u!114 &1611911884443749141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2715138509258635168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a83a6fdb01d27784bb9e65cc33b72cf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChildFollowAndRotate
-  _child: {fileID: 1375341703839937070}
-  _positionLerpSpeed: 5
-  _rotationLerpSpeed: 5
-  _maxRotationAngle: 10
-  _rotationMultiplier: 1
+  _cardVisual: {fileID: 1375341703839937070}
 --- !u!1 &3168953945247024147
 GameObject:
   m_ObjectHideFlags: 0
