@@ -27,6 +27,7 @@ namespace CardGame.Abilities
         {
             if (!HasPp)
             {
+                onDone?.Invoke();
                 return;
             }
 

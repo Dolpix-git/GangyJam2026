@@ -23,14 +23,14 @@ namespace CardGame.Abilities.Actions
 
             foreach (var target in targets)
             {
-                var healable = target.GetComponent<IHealable>();
+                var healable = target.GetComponent<HealthData>();
                 if (healable != null)
                 {
                     healable.Heal(_amount);
                 }
                 else
                 {
-                    Debug.LogWarning($"HealAction: '{target.name}' has no IHealable component.");
+                    Debug.LogWarning($"HealAction: '{target.name}' has no HealthData component.");
                 }
             }
 

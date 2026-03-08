@@ -24,14 +24,14 @@ namespace CardGame.Abilities.Actions
 
             foreach (var target in targets)
             {
-                var damageable = target.GetComponent<IDamageable>();
+                var damageable = target.GetComponent<HealthData>();
                 if (damageable != null)
                 {
                     damageable.TakeDamage(damage);
                 }
                 else
                 {
-                    Debug.LogWarning($"DamageAction: '{target.name}' has no IDamageable component.");
+                    Debug.LogWarning($"DamageAction: '{target.name}' has no HealthData component.");
                 }
             }
 

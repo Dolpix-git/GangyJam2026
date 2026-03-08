@@ -36,6 +36,12 @@ namespace CardGame.StateMachine.Game.States
             var groups = BuildSpeedGroups(ctx);
 
             foreach (var group in groups)
+            foreach (var entry in group)
+            {
+                entry.Card.GetComponent<BuffData>()?.TickAll();
+            }
+
+            foreach (var group in groups)
             {
                 Debug.Log($"[Battle] Executing {group.Count} card(s) at speed {group[0].Speed}.");
 
@@ -45,7 +51,6 @@ namespace CardGame.StateMachine.Game.States
                 foreach (var entry in group)
                 {
                     var buffData = entry.Card.GetComponent<BuffData>();
-                    buffData?.TickAll();
 
                     if (buffData != null && buffData.IsParalysed)
                     {

@@ -25,7 +25,7 @@ namespace CardGame.Buffs
             }
 
             _turnsRemaining--;
-            card.GetComponent<IDamageable>()?.TakeDamage(_damagePerTurn);
+            card.GetComponent<HealthData>()?.TakeDamage(_damagePerTurn);
             Debug.Log($"[Frost] '{card.name}' takes {_damagePerTurn} frost damage. ({_turnsRemaining} turns left)");
         }
 

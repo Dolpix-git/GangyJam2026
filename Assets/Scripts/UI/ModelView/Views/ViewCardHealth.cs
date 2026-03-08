@@ -34,36 +34,6 @@ namespace UI.ModelView.Views
         private Coroutine _healthCoroutine;
         private Coroutine _shieldCoroutine;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            Subscribe();
-            Refresh();
-        }
-
-        private void Subscribe()
-        {
-            Unsubscribe();
-
-            if (Model == null)
-            {
-                return;
-            }
-
-            _health = Model.GetComponent<HealthData>();
-            _buffs = Model.GetComponent<BuffData>();
-
-            if (_health != null)
-            {
-                _health.OnHealthChanged += OnHealthChanged;
-            }
-
-            if (_buffs != null)
-            {
-                _buffs.OnBuffsChanged += OnBuffsChanged;
-            }
-        }
-
         protected override void OnDisable()
         {
             base.OnDisable();
@@ -72,11 +42,15 @@ namespace UI.ModelView.Views
 
         protected override void HandleModelChanged(GameObject model)
         {
-            Subscribe();
-            if (model == null)
-            {
-                return;
-            }
+            Unsubscribe();
+
+            if (model == null) return;
+
+            _health = model.GetComponent<HealthData>();
+            _buffs  = model.GetComponent<BuffData>();
+
+            if (_health != null) _health.OnHealthChanged += OnHealthChanged;
+            if (_buffs  != null) _buffs.OnBuffsChanged   += OnBuffsChanged;
 
             Refresh();
         }
@@ -161,52 +135,27 @@ namespace UI.ModelView.Views
 
         private void AnimateHealth(float targetFill)
         {
-            if (_healthBar == null)
-            {
-                return;
-            }
-
-            if (_healthCoroutine != null)
-            {
-                StopCoroutine(_healthCoroutine);
-            }
-
-            _healthCoroutine = StartCoroutine(AnimateFill(_healthBar, targetFill, _healthAnimDuration));
+            if (_healthBar == null) return;
+            if (_healthCoroutine != null) StopCoroutine(_healthCoroutine);
+            _healthCoroutine = StartCoroutine(AnimateFill(_healthBar, _healthBar.fillAmount, targetFill, _healthAnimDuration));
         }
 
         private void AnimateGhost(float targetFill)
         {
-            if (_ghostBar == null)
-            {
-                return;
-            }
-
-            if (_ghostCoroutine != null)
-            {
-                StopCoroutine(_ghostCoroutine);
-            }
-
-            _ghostCoroutine = StartCoroutine(GhostRoutine(targetFill));
+            if (_ghostBar == null) return;
+            if (_ghostCoroutine != null) StopCoroutine(_ghostCoroutine);
+            _ghostCoroutine = StartCoroutine(GhostRoutine(_ghostBar.fillAmount, targetFill));
         }
 
         private void AnimateShield(float targetFill)
         {
-            if (_shieldBar == null)
-            {
-                return;
-            }
-
-            if (_shieldCoroutine != null)
-            {
-                StopCoroutine(_shieldCoroutine);
-            }
-
-            _shieldCoroutine = StartCoroutine(AnimateFill(_shieldBar, targetFill, _shieldAnimDuration));
+            if (_shieldBar == null) return;
+            if (_shieldCoroutine != null) StopCoroutine(_shieldCoroutine);
+            _shieldCoroutine = StartCoroutine(AnimateFill(_shieldBar, _shieldBar.fillAmount, targetFill, _shieldAnimDuration));
         }
 
-        private static IEnumerator AnimateFill(Image bar, float target, float duration)
+        private static IEnumerator AnimateFill(Image bar, float start, float target, float duration)
         {
-            var start = bar.fillAmount;
             var elapsed = 0f;
 
             while (elapsed < duration)
@@ -219,9 +168,9 @@ namespace UI.ModelView.Views
             bar.fillAmount = target;
         }
 
-        private IEnumerator GhostRoutine(float targetFill)
+        private IEnumerator GhostRoutine(float start, float targetFill)
         {
-            if (targetFill >= _ghostBar.fillAmount)
+            if (targetFill >= start)
             {
                 _ghostBar.fillAmount = targetFill;
                 yield break;
@@ -229,7 +178,6 @@ namespace UI.ModelView.Views
 
             yield return new WaitForSeconds(_ghostDelay);
 
-            var start = _ghostBar.fillAmount;
             var elapsed = 0f;
             while (elapsed < _ghostAnimDuration)
             {

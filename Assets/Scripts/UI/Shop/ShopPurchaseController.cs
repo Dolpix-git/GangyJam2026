@@ -82,12 +82,6 @@ namespace CardGame.UI.Shop
 
         public void Buy()
         {
-            if (_selected.Count == 0)
-            {
-                Debug.Log("[Shop] Nothing selected.");
-                return;
-            }
-
             if (!CanAffordSelected())
             {
                 Debug.Log($"[Shop] Not enough coins. Have {RunContext.Instance.Coins}.");
@@ -114,12 +108,6 @@ namespace CardGame.UI.Shop
             }
 
             RunContext.Instance.Save();
-            _selected.Clear();
-            _stateData.GoToState(new ExploreCombineState());
-        }
-
-        public void Skip()
-        {
             _selected.Clear();
             _stateData.GoToState(new ExploreCombineState());
         }
